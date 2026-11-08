@@ -1,4 +1,4 @@
-CAMPUSCODE CINEMATIC SCROLL EXPERIENCE
+CAMPUSCODE 
 =======================================
 
 Overview
@@ -26,3 +26,6 @@ Development Commands
 - npm run dev : Start local development server
 - npm run build : Build optimized production bundle
 - npm run preview : Preview production build locally
+
+live demo: https://rebuild-liard.vercel.app/
+
