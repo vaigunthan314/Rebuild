@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusCode — 3D Cinematic Hackathon Arena</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Global Scroll Progress Bar in Flat Violet -->
+    <div class="global-scroll-progress-bar">
+      <div class="global-scroll-progress-fill"></div>
+    </div>
+
+    <!-- Site Navigation Bar and Status Strip (Highest Layer, Fixed) -->
+    <header class="site-navbar is-intro-hidden" inert>
+      <div class="navbar-main-row">
+        <a href="index.html" class="brand-link" aria-label="CampusCode home" tabindex="0">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="bar-black"></span>
+            <span class="bar-violet"></span>
+            <span class="bar-lime"></span>
+          </div>
+          <div class="brand-text">
+            <strong>CAMPUSCODE</strong>
+            <small>HACKATHON ARENA</small>
+          </div>
+        </a>
+
+        <nav class="nav-links">
+          <button type="button" data-target="section-about">ABOUT</button>
+          <button type="button" data-target="section-how">HOW IT WORKS</button>
+          <button type="button" data-target="section-hackathons">HACKATHONS</button>
+          <button type="button" data-target="section-community">COMMUNITY</button>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="/login" class="btn-login">LOGIN</a>
+          <a href="/register" class="btn-join-lime">
+            <span>JOIN CAMPUSCODE</span>
+            <b>↗</b>
+          </a>
+          <button type="button" class="nav-mobile-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </div>
+
+      <!-- Thin Status Strip Under Navbar -->
+      <div class="navbar-status-strip">
+        <div class="status-strip-left">
+          <span class="live-dot-lime" aria-hidden="true"></span>
+          <span class="status-strip-text">The digital home for student innovation</span>
+        </div>
+        <div class="status-strip-mid">Chennai · India</div>
+        <div class="status-strip-clock" aria-label="Live Chennai clock">--:--:--</div>
+      </div>
+    </header>
+
+    <!-- Fixed Full-Screen 3D Video Canvas (Strictly Fixed Inset 0, 100vw x 100dvh) -->
+    <div class="cinematic-canvas-wrapper is-opening-hidden">
+      <canvas class="cinematic-canvas"></canvas>
+    </div>
+
+    <!-- Fixed Full-Screen Live 3D Scene Canvas (Active behind Hero and sections 01 to 04) -->
+    <div class="live-three-canvas-wrapper" style="display: none;">
+      <canvas class="live-three-canvas"></canvas>
+    </div>
+
+    <!-- Dedicated Full-Screen Black Opening Scene Stage (Near-black rgb(8, 8, 12)) -->
+    <div class="opening-stage-overlay">
+      <div class="opening-dust-container"></div>
+      <div class="opening-floor-shadow"></div>
+      <canvas class="hero-three-canvas"></canvas>
+      <button type="button" class="opening-skip-btn">SKIP ↗</button>
+
+      <div class="opening-brand-lockup">
+        <h1 class="opening-wordmark" aria-label="CAMPUSCODE">
+          <span class="wordmark-letter">C</span>
+          <span class="wordmark-letter">A</span>
+          <span class="wordmark-letter">M</span>
+          <span class="wordmark-letter">P</span>
+          <span class="wordmark-letter">U</span>
+          <span class="wordmark-letter">S</span>
+          <span class="wordmark-letter">C</span>
+          <span class="wordmark-letter">O</span>
+          <span class="wordmark-letter">D</span>
+          <span class="wordmark-letter">E</span>
+        </h1>
+        <div class="opening-tagline-wrap">
+          <span class="opening-tagline">HACKATHON ARENA</span>
+          <div class="opening-lime-line"></div>
+        </div>
+      </div>
+
+      <div class="opening-scroll-prompt">
+        <span>SCROLL TO ENTER</span>
+        <span class="scroll-cue-arrow">↓</span>
+      </div>
+    </div>
+
+    <!-- 1px L-Shaped Corner Marks at Four Viewport Corners -->
+    <div class="screen-corner-mark corner-top-left" aria-hidden="true"></div>
+    <div class="screen-corner-mark corner-top-right" aria-hidden="true"></div>
+    <div class="screen-corner-mark corner-bottom-left" aria-hidden="true"></div>
+    <div class="screen-corner-mark corner-bottom-right" aria-hidden="true"></div>
+
+    <!-- Slim Vertical Progress Indicator on Right Edge -->
+    <nav class="vertical-progress-nav" aria-label="Section progress navigation">
+      <div class="vertical-progress-track"></div>
+      <button type="button" class="progress-dot is-active" data-target="landing-hero" aria-label="Hero section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">HERO</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-about" aria-label="About section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">ABOUT</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-experience" aria-label="Experience section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">EXPERIENCE</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-how" aria-label="How it works section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">HOW</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-hackathons" aria-label="Arena section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">ARENA</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-mission" aria-label="Mission section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">MISSION</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-community" aria-label="Network section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">NETWORK</span>
+      </button>
+      <button type="button" class="progress-dot" data-target="section-cta" aria-label="Ready section">
+        <span class="progress-dot-point"></span>
+        <span class="progress-dot-tooltip">READY</span>
+      </button>
+    </nav>
+
+    <!-- Main Page Layout -->
+    <div class="page-wrapper">
+      <!-- PRELUDE (Video Prelude: 450vh wrapper containing 100vh sticky stage) -->
+      <section class="section-prelude" data-section-name="PRELUDE">
+        <div class="prelude-sticky-stage">
+          <!-- Top-Right HUD Cue and Skip Button -->
+          <div class="prelude-hud-top-right">
+            <div class="prelude-hud-cue">
+              <span class="prelude-cue-text">SCROLL TO EXPLORE</span>
+              <span class="prelude-cue-arrow" aria-hidden="true">↓</span>
+            </div>
+            <button type="button" class="prelude-skip-btn">
+              <span>SKIP TO ARENA</span>
+              <b>↗</b>
+            </button>
+          </div>
+
+          <!-- Left Edge: Bottom-Left Mono Counters (Top-left chapter rail removed) -->
+          <div class="prelude-left-edge">
+            <div class="prelude-bottom-left-counter">
+              <div class="prelude-giant-chapter-num" aria-hidden="true">01</div>
+              <div class="prelude-frame-counter">000%</div>
+            </div>
+          </div>
+
+          <!-- Left Side Decorative Objects (Parallax & Drift, Kept in Left Margin) -->
+          <div class="prelude-decor-left" aria-hidden="true">
+            <div class="prelude-shape-lime-ring"></div>
+            <div class="prelude-shape-logo-bars">
+              <span class="bar-b"></span>
+              <span class="bar-v"></span>
+              <span class="bar-l"></span>
+            </div>
+            <div class="prelude-shape-outline-box box-1"></div>
+          </div>
+
+          <!-- Right Side Decorative Objects (Parallax & Drift, Kept in Right Margin) -->
+          <div class="prelude-decor-right" aria-hidden="true">
+            <div class="prelude-shape-violet-circle"></div>
+            <div class="prelude-shape-cube">
+              <svg width="36" height="42" viewBox="0 0 36 42" fill="none">
+                <polygon points="18,2 34,11 18,20 2,11" fill="rgb(255, 255, 255)" stroke="rgb(11, 11, 15)" stroke-width="1.5"/>
+                <polygon points="2,11 18,20 18,39 2,30" fill="rgb(118, 101, 255)" stroke="rgb(11, 11, 15)" stroke-width="1.5"/>
+                <polygon points="18,20 34,11 34,30 18,39" fill="rgb(11, 11, 15)" stroke="rgb(11, 11, 15)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="prelude-shape-outline-box box-2"></div>
+          </div>
+
+          <!-- Chapter Cards (Centre 40% Stays Completely Clear) -->
+          <div class="prelude-cards-layer">
+            <!-- Chapter 1 (Left Edge) -->
+            <article class="prelude-card card-chapter-1 card-pos-left is-card-active" data-chapter="1">
+              <div class="prelude-card-header">
+                <span class="prelude-card-chip">01 ASSEMBLE</span>
+                <span class="prelude-card-indicator">BLOCK 01</span>
+              </div>
+              <p class="prelude-card-cue">Every idea starts as a single block.</p>
+            </article>
+
+            <!-- Chapter 2 (Right Edge) -->
+            <article class="prelude-card card-chapter-2 card-pos-right" data-chapter="2">
+              <div class="prelude-card-header">
+                <span class="prelude-card-chip">02 CONNECT</span>
+                <span class="prelude-card-indicator">LINK 02</span>
+              </div>
+              <p class="prelude-card-cue">Students, teams and organizers link up.</p>
+            </article>
+
+            <!-- Chapter 3 (Left Edge) -->
+            <article class="prelude-card card-chapter-3 card-pos-left" data-chapter="3">
+              <div class="prelude-card-header">
+                <span class="prelude-card-chip">03 EXPAND</span>
+                <span class="prelude-card-indicator">EXPAND 03</span>
+              </div>
+              <p class="prelude-card-cue">Then the arena opens up.</p>
+            </article>
+
+            <!-- Chapter 4 (Right Edge) -->
+            <article class="prelude-card card-chapter-4 card-pos-right" data-chapter="4">
+              <div class="prelude-card-header">
+                <span class="prelude-card-chip">04 REVEAL</span>
+                <span class="prelude-card-indicator">ARENA 04</span>
+              </div>
+              <p class="prelude-card-cue">CampusCode. Build. Compete. Ship.</p>
+            </article>
+          </div>
+
+          <!-- Right Edge: Slim Vertical Lime Progress Bar -->
+          <div class="prelude-right-rail" aria-hidden="true">
+            <div class="prelude-right-rail-fill"></div>
+          </div>
+
+          <!-- Final Hard Wipe Transition Layers (Near-black then Lime across screen to reveal Hero) -->
+          <div class="prelude-wipe-black" aria-hidden="true"></div>
+          <div class="prelude-wipe-lime" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- 00 HERO (Shared Header Strip, Left Solid White Panel, Cube on Right, HUD Tags) -->
+      <section class="landing-hero" data-section-name="HERO">
+        <!-- Shared Section Header Strip -->
+        <div class="section-header-strip hero-header-strip">
+          <div class="header-strip-left">
+            <span class="live-dot-lime" aria-hidden="true"></span>
+            <span class="header-strip-chip">00 — HOME</span>
+          </div>
+          <div class="hero-header-headline">THE DIGITAL HOME FOR STUDENT INNOVATION</div>
+          <div class="header-strip-counter hero-header-meta">
+            <span class="hero-header-location">CHENNAI · INDIA</span>
+            <span class="hero-header-index">00 / 07</span>
+          </div>
+        </div>
+
+        <div class="hero-stage-layout">
+          <!-- Left: Flat Solid White Hero Panel -->
+          <div class="hero-flat-panel is-hero-hidden">
+            <!-- Row 1: Label CAMPUSCODE / 001 -->
+            <div class="hero-panel-label scramble-on-enter">CAMPUSCODE / 001</div>
+
+            <!-- Row 2: Headline BUILD / COMPETE / SHIP. -->
+            <h1 class="hero-panel-title">
+              <span class="split-word">BUILD</span><br />
+              <span class="split-word highlight-violet">COMPETE</span><br />
+              <span class="split-word">SHIP<span class="hero-lime-dot">.</span></span>
+            </h1>
+
+            <!-- Row 3: Description Text -->
+            <p class="hero-panel-description">
+              A digital arena for students who don't just have ideas. They build them.
+            </p>
+
+            <!-- Row 4: Action Button -->
+            <div class="hero-panel-btn-row">
+              <button type="button" class="btn-flat-violet" data-target="section-hackathons">
+                <span>EXPLORE HACKATHONS</span>
+                <b>↗</b>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Side: HUD Tags with Pointer Lines -->
+          <div class="hero-hud-tags-container is-hero-hidden">
+            <div class="hero-hud-pointer-tag hud-tag-arena" data-target="section-hackathons" role="button" tabindex="0" aria-label="Explore Hackathons">
+              <div class="hud-tag-box">
+                <span class="hud-tag-category">01 LIVE ARENA</span>
+                <span class="hud-tag-value"><strong class="counter-number" data-target-num="4">0</strong> Active Challenges</span>
+              </div>
+              <div class="hud-pointer-line line-arena" aria-hidden="true">
+                <span class="pointer-line-bar"></span>
+                <span class="pointer-line-dot"></span>
+              </div>
+            </div>
+
+            <div class="hero-hud-pointer-tag hud-tag-network" data-target="section-community" role="button" tabindex="0" aria-label="Join Student Community">
+              <div class="hud-tag-box">
+                <span class="hud-tag-category">STUDENT NETWORK</span>
+                <span class="hud-tag-value"><strong class="counter-number" data-target-num="10000" data-format="comma">0</strong>+ Verified Builders</span>
+              </div>
+              <div class="hud-pointer-line line-network" aria-hidden="true">
+                <span class="pointer-line-bar"></span>
+                <span class="pointer-line-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee Strip: Full-Width Continuous Ticker -->
+      <section class="marquee-strip" data-section-name="MARQUEE" aria-label="Brand keywords ticker">
+        <div class="marquee-track">
+          <span class="marquee-item">PEOPLE <span class="star-lime">✦</span></span>
+          <span class="marquee-item">PRODUCTS <span class="star-violet">✦</span></span>
+          <span class="marquee-item">INNOVATION <span class="star-lime">✦</span></span>
+          <span class="marquee-item">COMMUNITY <span class="star-violet">✦</span></span>
+          <span class="marquee-item">IDEAS <span class="star-lime">✦</span></span>
+          <span class="marquee-item">PEOPLE <span class="star-violet">✦</span></span>
+          <span class="marquee-item">PRODUCTS <span class="star-lime">✦</span></span>
+          <span class="marquee-item">INNOVATION <span class="star-violet">✦</span></span>
+          <span class="marquee-item">COMMUNITY <span class="star-lime">✦</span></span>
+          <span class="marquee-item">IDEAS <span class="star-violet">✦</span></span>
+        </div>
+      </section>
+
+      <!-- 01 WHAT IS CAMPUSCODE?: Sticky Stage (240vh), Narrow Column (34vw), Whole Cube Shows on Left -->
+      <section class="section-about" data-section-name="01 ABOUT">
+        <div class="about-sticky-stage">
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip">
+            <div class="header-strip-left">
+              <span class="live-dot-lime" aria-hidden="true"></span>
+              <span class="header-strip-chip">01 — WHAT IS CAMPUSCODE?</span>
+            </div>
+            <div class="header-strip-counter">01 / 07</div>
+          </div>
+
+          <!-- Stage Layout: Cube on Left, Column Pinned on Right -->
+          <div class="about-stage-body">
+            <!-- 3 Left Fact Tags over video connected to cube -->
+            <div class="about-left-fact-tags" aria-hidden="true">
+              <div class="about-fact-tag tag-1 is-active" data-step="1">
+                <div class="fact-tag-pill">
+                  <span class="fact-tag-dot"></span>
+                  <span class="fact-tag-text">01 STUDENTS · BUILD TEAMS</span>
+                </div>
+                <div class="fact-tag-line line-1"></div>
+              </div>
+              <div class="about-fact-tag tag-2" data-step="2">
+                <div class="fact-tag-pill">
+                  <span class="fact-tag-dot"></span>
+                  <span class="fact-tag-text">02 ORGANIZERS · RUN ARENAS</span>
+                </div>
+                <div class="fact-tag-line line-2"></div>
+              </div>
+              <div class="about-fact-tag tag-3" data-step="3">
+                <div class="fact-tag-pill">
+                  <span class="fact-tag-dot"></span>
+                  <span class="fact-tag-text">03 HACKATHONS · LIVE JUDGING</span>
+                </div>
+                <div class="fact-tag-line line-3"></div>
+              </div>
+            </div>
+
+            <!-- Flat HUD Tag pointing at the cube -->
+            <div class="about-cube-hud-tag" aria-hidden="true">
+              <span class="live-dot-lime"></span>
+              <span class="hud-tag-title">ONE CONNECTED ECOSYSTEM</span>
+              <div class="hud-connector-line"></div>
+            </div>
+
+            <div class="about-right-column flat-card">
+              <!-- CC Box & Orbit Graphic on Top of Column -->
+              <div class="about-visual" aria-hidden="true">
+                <div class="orbital-ring ring-outer"></div>
+                <div class="orbital-ring ring-mid"></div>
+                <div class="about-core">CC</div>
+                <button type="button" class="orbital-node node-1 is-active" data-step="1" aria-label="Step 1 Students">01</button>
+                <button type="button" class="orbital-node node-2" data-step="2" aria-label="Step 2 Teams">02</button>
+                <button type="button" class="orbital-node node-3" data-step="3" aria-label="Step 3 Organizers">03</button>
+                <button type="button" class="orbital-node node-4" data-step="4" aria-label="Step 4 Hackathons">04</button>
+              </div>
+
+              <!-- Flat Caption under Orbit that swaps on scroll or click -->
+              <div class="about-step-caption-box">
+                <strong class="about-step-name">STUDENTS</strong>: <span class="about-step-desc">10,000+ verified builders ready to tackle real engineering problems.</span>
+              </div>
+
+              <!-- Text Below Graphic with Slot-Machine Rotating Headline -->
+              <div class="about-content">
+                <div class="section-eyebrow">
+                  <span class="live-dot-lime"></span>
+                  <span class="scramble-on-enter">01 / WHAT IS CAMPUSCODE?</span>
+                </div>
+                <h2 class="section-heading-lg about-slot-heading">WHERE STUDENTS <span class="slot-machine-wrapper"><span class="slot-machine-active highlight-violet">BUILD.</span></span></h2>
+                <p class="about-desc">
+                  CampusCode brings students, teams, organizers, and hackathons into one connected ecosystem.
+                </p>
+              </div>
+
+              <!-- 2 by 2 Grid of Count-Up Stat Chips Flipping to Short Description on Hover -->
+              <div class="about-stats-grid">
+                <div class="about-stat-chip" tabindex="0">
+                  <div class="chip-flip-inner">
+                    <div class="chip-face chip-face-front">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="7" r="4" stroke="rgb(8, 8, 12)"/>
+                        <path d="M4 21c0-4 4-7 8-7s8 3 8 7" stroke="rgb(8, 8, 12)"/>
+                      </svg>
+                      <div class="stat-chip-num counter-number" data-target-num="120" data-suffix="+">120+</div>
+                      <span class="stat-chip-label">STUDENTS</span>
+                    </div>
+                    <div class="chip-face chip-face-back">
+                      <strong class="chip-back-title">STUDENTS</strong>
+                      <span class="chip-back-desc">Verified builders & coders</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="about-stat-chip" tabindex="0">
+                  <div class="chip-flip-inner">
+                    <div class="chip-face chip-face-front">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="8" cy="8" r="3" stroke="rgb(8, 8, 12)"/>
+                        <circle cx="16" cy="8" r="3" stroke="rgb(8, 8, 12)"/>
+                        <path d="M2 19c0-3 3-5 6-5h8c3 0 6 2 6 5" stroke="rgb(8, 8, 12)"/>
+                      </svg>
+                      <div class="stat-chip-num counter-number" data-target-num="24">24</div>
+                      <span class="stat-chip-label">TEAMS</span>
+                    </div>
+                    <div class="chip-face chip-face-back">
+                      <strong class="chip-back-title">TEAMS</strong>
+                      <span class="chip-back-desc">Active hackathon squads</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="about-stat-chip" tabindex="0">
+                  <div class="chip-flip-inner">
+                    <div class="chip-face chip-face-front">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="16" rx="2" stroke="rgb(8, 8, 12)"/>
+                        <line x1="8" y1="2" x2="8" y2="6" stroke="rgb(8, 8, 12)"/>
+                        <line x1="16" y1="2" x2="16" y2="6" stroke="rgb(8, 8, 12)"/>
+                        <line x1="3" y1="10" x2="21" y2="10" stroke="rgb(8, 8, 12)"/>
+                      </svg>
+                      <div class="stat-chip-num counter-number" data-target-num="12">12</div>
+                      <span class="stat-chip-label">ORGANIZERS</span>
+                    </div>
+                    <div class="chip-face chip-face-back">
+                      <strong class="chip-back-title">ORGANIZERS</strong>
+                      <span class="chip-back-desc">University & tech hosts</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="about-stat-chip" tabindex="0">
+                  <div class="chip-flip-inner">
+                    <div class="chip-face chip-face-front">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" stroke="rgb(8, 8, 12)"/>
+                      </svg>
+                      <div class="stat-chip-num counter-number" data-target-num="6">6</div>
+                      <span class="stat-chip-label">HACKATHONS</span>
+                    </div>
+                    <div class="chip-face chip-face-back">
+                      <strong class="chip-back-title">HACKATHONS</strong>
+                      <span class="chip-back-desc">Annual live arenas</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thin lime progress bar along bottom of column filling with 4 steps -->
+              <div class="about-column-progress-bar" aria-hidden="true">
+                <div class="about-progress-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 THE CAMPUSCODE EXPERIENCE: Sticky Stage (260vh), ONE Medium Card Centred -->
+      <section class="section-experience" data-section-name="02 EXPERIENCE">
+        <div class="experience-sticky-stage">
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip">
+            <div class="header-strip-left">
+              <span class="live-dot-lime" aria-hidden="true"></span>
+              <span class="header-strip-chip">02 — EXPERIENCE</span>
+            </div>
+            <h2 class="exp-header-headline">THE CAMPUSCODE EXPERIENCE / BUILD TOGETHER.</h2>
+            <div class="exp-header-meta">
+              <span class="exp-header-time">00:30</span>
+              <span class="header-strip-counter">02 / 07</span>
+            </div>
+          </div>
+
+          <!-- Centred Medium Media Card (70vw x 54vh, No Overlapping Text) -->
+          <div class="experience-card-stage">
+            <div class="experience-medium-card">
+              <!-- Left ~62%: Video Area with Corner Brackets, Timecode, Brand Label -->
+              <div class="exp-video-pane" tabindex="0" role="region" aria-label="CampusCode experience video player">
+                <video
+                  class="experience-native-video"
+                  muted
+                  playsinline
+                  loop
+                  preload="metadata"
+                >
+                  <source src="/assets/experience.mp4" type="video/mp4" />
+                </video>
+
+                <div class="video-fallback-poster">
+                  <div class="brand-mark large-emblem">
+                    <span class="bar-black"></span>
+                    <span class="bar-violet"></span>
+                    <span class="bar-lime"></span>
+                  </div>
+                  <strong class="fallback-poster-title">THE CAMPUSCODE EXPERIENCE</strong>
+                  <span class="fallback-poster-sub">PREVIEW REEL · 00:30</span>
+                </div>
+
+                <!-- Flat Viewfinder Corner Brackets -->
+                <div class="viewfinder-corner vf-tl" aria-hidden="true"></div>
+                <div class="viewfinder-corner vf-tr" aria-hidden="true"></div>
+                <div class="viewfinder-corner vf-bl" aria-hidden="true"></div>
+                <div class="viewfinder-corner vf-br" aria-hidden="true"></div>
+
+                <!-- Safe Area Top-Left: Brand Label Only (No Overlap) -->
+                <div class="exp-video-brand-label">BUILD · COMPETE · SHIP</div>
+
+                <!-- Safe Area Top-Right: Blinking REC Dot (No Overlap) -->
+                <div class="exp-video-rec" aria-hidden="true">
+                  <span class="rec-dot"></span>
+                  <span class="rec-text">REC</span>
+                </div>
+
+                <!-- Big Flat Square Icon Popping on Play/Pause Toggle -->
+                <div class="video-toggle-indicator" aria-hidden="true">
+                  <span class="toggle-indicator-icon">▶</span>
+                </div>
+
+                <!-- Bottom-Left: Timecode 00:00 to 00:30 following scroll -->
+                <div class="exp-video-timecode" aria-label="Video timecode">00:00</div>
+
+                <!-- Bottom-Right: Separate Flat SOUND Button (Never Toggles Play/Pause) -->
+                <button type="button" class="exp-sound-btn" aria-label="Toggle video sound" aria-pressed="false">
+                  <span class="sound-btn-icon" aria-hidden="true">🔈</span>
+                  <span class="sound-btn-label">SOUND OFF</span>
+                </button>
+              </div>
+
+              <!-- Right ~38%: Near-Black Chapter List -->
+              <div class="exp-chapters-pane">
+                <div class="exp-chapters-header">
+                  <span class="chapters-header-title">ARENA PHASES</span>
+                  <span class="chapters-header-count">03 STAGES</span>
+                </div>
+
+                <div class="exp-chapters-list" role="tablist" aria-label="Experience chapters">
+                  <!-- Chapter 01 -->
+                  <button type="button" class="exp-chapter-item is-active" data-chapter="0" data-seek="0" role="tab" aria-selected="true">
+                    <div class="chapter-item-top">
+                      <span class="chapter-icon">💡</span>
+                      <strong class="chapter-title">01 IDEATE</strong>
+                      <span class="chapter-badge">00:00</span>
+                    </div>
+                    <p class="chapter-desc">Brainstorm concepts, form hypotheses, and frame problem statements.</p>
+                    <div class="chapter-wipe-curtain" aria-hidden="true"></div>
+                  </button>
+
+                  <!-- Chapter 02 -->
+                  <button type="button" class="exp-chapter-item" data-chapter="1" data-seek="10" role="tab" aria-selected="false">
+                    <div class="chapter-item-top">
+                      <span class="chapter-icon">⚡</span>
+                      <strong class="chapter-title">02 ACCELERATE</strong>
+                      <span class="chapter-badge">00:10</span>
+                    </div>
+                    <p class="chapter-desc">Assemble cross-functional squads and prototype high-velocity MVPs.</p>
+                    <div class="chapter-wipe-curtain" aria-hidden="true"></div>
+                  </button>
+
+                  <!-- Chapter 03 -->
+                  <button type="button" class="exp-chapter-item" data-chapter="2" data-seek="20" role="tab" aria-selected="false">
+                    <div class="chapter-item-top">
+                      <span class="chapter-icon">🚀</span>
+                      <strong class="chapter-title">03 DEPLOY</strong>
+                      <span class="chapter-badge">00:20</span>
+                    </div>
+                    <p class="chapter-desc">Ship production-ready builds to live arenas for expert evaluation.</p>
+                    <div class="chapter-wipe-curtain" aria-hidden="true"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Under Card: Flat Film-Strip Timeline with 10 ticks and lime playhead -->
+            <div class="exp-filmstrip-timeline" aria-label="Video timeline scrubber">
+              <div class="filmstrip-ticks-row">
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:00</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:03</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:06</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:09</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:12</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:15</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:18</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:21</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:24</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:27</b></span>
+                <span class="filmstrip-tick"><i class="tick-line"></i><b class="tick-label">00:30</b></span>
+              </div>
+              <div class="filmstrip-playhead-track">
+                <div class="filmstrip-playhead">
+                  <span class="playhead-needle"></span>
+                  <span class="playhead-tag">00:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Strip -->
+          <div class="exp-bottom-strip">
+            <span class="exp-bottom-left">WATCH THE STORY</span>
+            <span class="exp-bottom-right">PLAYS AS YOU SCROLL ↗</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 HOW IT WORKS: Sticky Stage (320vh) Over Scrubbing Video, A Quest Concept -->
+      <section class="section-how" data-section-name="03 HOW IT WORKS">
+        <div class="how-sticky-stage">
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip">
+            <div class="header-strip-left">
+              <span class="live-dot-lime" aria-hidden="true"></span>
+              <span class="header-strip-chip">03 — HOW IT WORKS</span>
+            </div>
+            <h2 class="how-header-headline">FROM IDEA TO IMPACT.</h2>
+            <div class="header-strip-counter how-header-meta">
+              <span class="how-step-indicator"><span class="how-counter-num">01</span> / 04</span>
+            </div>
+          </div>
+
+          <!-- Quest XP HUD Bar directly under header -->
+          <div class="how-quest-hud" aria-label="Quest level and experience progression">
+            <div class="how-level-badge">LEVEL 1 ROOKIE</div>
+            <div class="how-xp-container">
+              <div class="how-xp-text"><span class="how-xp-current">0</span> / 400 XP</div>
+              <div class="how-xp-bar-track">
+                <div class="how-xp-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thin Lime Edge Progress Rail on Left Edge -->
+          <div class="how-edge-rail" aria-hidden="true">
+            <div class="how-edge-rail-fill"></div>
+          </div>
+
+          <!-- 4 Cards Alternating Left and Right, Centre Stays Clear for Video Cube and Wordmark -->
+          <div class="how-cards-stage">
+            <!-- Step 1: DISCOVER (Left Edge) -->
+            <div class="how-step-card step-card-1 step-pos-left is-step-active" data-step="1">
+              <div class="step-giant-num" aria-hidden="true">01</div>
+              <div class="step-card-header">
+                <span class="step-lime-num">01</span>
+                <span class="step-time-tag">STEP 01 · 2 MIN</span>
+                <div class="step-icon-flat icon-discover" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle class="anim-lens-sweep" cx="11" cy="11" r="7" stroke="rgb(168, 230, 46)"/>
+                    <line x1="16.5" y1="16.5" x2="22" y2="22" stroke="rgb(255, 255, 255)"/>
+                    <line class="anim-radar-needle" x1="11" y1="11" x2="16" y2="8" stroke="rgb(168, 230, 46)"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="step-title">DISCOVER</h3>
+              <p class="step-desc">Find a challenge that makes you want to build.</p>
+
+              <!-- Live Mini-Demo: Search Typing & Result Chips -->
+              <div class="card-mini-demo demo-discover" aria-hidden="true">
+                <div class="demo-search-bar">
+                  <span class="demo-search-icon">🔍</span>
+                  <span class="demo-search-query">ai challenge</span>
+                </div>
+                <div class="demo-chips-row">
+                  <span class="demo-chip chip-a">AI Vision</span>
+                  <span class="demo-chip chip-b">Agentic IDE</span>
+                  <span class="demo-chip chip-c">Agents</span>
+                </div>
+              </div>
+
+              <!-- Quest Badge & Floating Chip -->
+              <div class="quest-badge-slot">
+                <div class="quest-badge-hex badge-1">
+                  <span class="badge-icon">⬡</span>
+                  <span class="badge-name">DISCOVERER</span>
+                </div>
+                <span class="flying-xp-chip chip-1">+100 XP</span>
+              </div>
+              <div class="step-connector-line line-to-right" aria-hidden="true"></div>
+            </div>
+
+            <!-- Step 2: TEAM UP (Right Edge) -->
+            <div class="how-step-card step-card-2 step-pos-right" data-step="2">
+              <div class="step-giant-num" aria-hidden="true">02</div>
+              <div class="step-card-header">
+                <span class="step-lime-num">02</span>
+                <span class="step-time-tag">STEP 02 · 5 MIN</span>
+                <div class="step-icon-flat icon-team" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle class="anim-pair-left" cx="8" cy="8" r="4" stroke="rgb(168, 230, 46)"/>
+                    <circle class="anim-pair-right" cx="16" cy="8" r="4" stroke="rgb(255, 255, 255)"/>
+                    <path d="M2 20c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6" stroke="rgb(168, 230, 46)"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="step-title">TEAM UP</h3>
+              <p class="step-desc">Find people who share your ambition.</p>
+
+              <!-- Live Mini-Demo: Squad Circles Sliding Together -->
+              <div class="card-mini-demo demo-team" aria-hidden="true">
+                <div class="demo-squad-cluster">
+                  <span class="demo-avatar av-1">AK</span>
+                  <span class="demo-avatar av-2">PS</span>
+                  <span class="demo-avatar av-3">LT</span>
+                  <span class="demo-squad-status">SQUAD FORMED (3/4)</span>
+                </div>
+              </div>
+
+              <!-- Quest Badge & Floating Chip -->
+              <div class="quest-badge-slot">
+                <div class="quest-badge-hex badge-2">
+                  <span class="badge-icon">⬡</span>
+                  <span class="badge-name">TEAM PLAYER</span>
+                </div>
+                <span class="flying-xp-chip chip-2">+100 XP</span>
+              </div>
+              <div class="step-connector-line line-to-left" aria-hidden="true"></div>
+            </div>
+
+            <!-- Step 3: BUILD (Left Edge) -->
+            <div class="how-step-card step-card-3 step-pos-left" data-step="3">
+              <div class="step-giant-num" aria-hidden="true">03</div>
+              <div class="step-card-header">
+                <span class="step-lime-num">03</span>
+                <span class="step-time-tag">STEP 03 · 24-48 HRS</span>
+                <div class="step-icon-flat icon-build" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline class="anim-bracket-left" points="7 8 3 12 7 16" stroke="rgb(168, 230, 46)"/>
+                    <polyline class="anim-bracket-right" points="17 8 21 12 17 16" stroke="rgb(168, 230, 46)"/>
+                    <line class="anim-cursor-blink" x1="14" y1="5" x2="10" y2="19" stroke="rgb(255, 255, 255)"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="step-title">BUILD</h3>
+              <p class="step-desc">Turn your idea into something people can use.</p>
+
+              <!-- Live Mini-Demo: Code Lines Typing + Progress Bar -->
+              <div class="card-mini-demo demo-build" aria-hidden="true">
+                <div class="demo-code-lines">
+                  <code>fn main() {</code>
+                  <code>  let squad = Team::new();</code>
+                  <code>  squad.compile();</code>
+                  <code>}</code>
+                </div>
+                <div class="demo-build-bar">
+                  <div class="demo-build-fill"></div>
+                </div>
+              </div>
+
+              <!-- Quest Badge & Floating Chip -->
+              <div class="quest-badge-slot">
+                <div class="quest-badge-hex badge-3">
+                  <span class="badge-icon">⬡</span>
+                  <span class="badge-name">MAKER</span>
+                </div>
+                <span class="flying-xp-chip chip-3">+100 XP</span>
+              </div>
+              <div class="step-connector-line line-to-right" aria-hidden="true"></div>
+            </div>
+
+            <!-- Step 4: SHIP (Right Edge) -->
+            <div class="how-step-card step-card-4 step-pos-right" data-step="4">
+              <div class="step-giant-num" aria-hidden="true">04</div>
+              <div class="step-card-header">
+                <span class="step-lime-num">04</span>
+                <span class="step-time-tag">STEP 04 · FINAL DEMO</span>
+                <div class="step-icon-flat icon-ship" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path class="anim-star-pop" d="M12 2L15 8L21 9L16.5 13.5L18 20L12 16.5L6 20L7.5 13.5L3 9L9 8L12 2Z" stroke="rgb(168, 230, 46)"/>
+                    <path class="anim-thrust" d="M12 17v5" stroke="rgb(255, 255, 255)"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="step-title">SHIP</h3>
+              <p class="step-desc">Submit your work and take it to the arena.</p>
+
+              <!-- Live Mini-Demo: Stamp SUBMITTED & Square Confetti Stage -->
+              <div class="card-mini-demo demo-ship" aria-hidden="true">
+                <div class="demo-ship-stamp">SUBMITTED</div>
+                <div class="demo-confetti-stage"></div>
+              </div>
+
+              <!-- Quest Badge & Floating Chip -->
+              <div class="quest-badge-slot">
+                <div class="quest-badge-hex badge-4">
+                  <span class="badge-icon">★</span>
+                  <span class="badge-name">SHIPPER</span>
+                </div>
+                <span class="flying-xp-chip chip-4">+100 XP</span>
+              </div>
+              <div class="step-connector-line line-to-left" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Centre Terminal Strip (~520px wide) -->
+          <div class="how-terminal-strip" aria-label="Quest command log">
+            <span class="terminal-prompt">></span>
+            <span class="terminal-cmd-text">discover --challenge ai-innovation</span>
+            <span class="terminal-check-tick">✓</span>
+            <span class="terminal-blink-caret">_</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 ENTER THE ARENA: Sticky Stage (300vh), Three Boarding-Pass Arena Tickets -->
+      <section class="section-hackathons" data-section-name="04 ARENA">
+        <div class="arena-sticky-stage">
+          <!-- Giant Outlined Status Word (LIVE / OPEN / UPCOMING) -->
+          <div class="arena-bg-status-word" aria-hidden="true">LIVE</div>
+
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip arena-header-wrap">
+            <div class="header-strip-left">
+              <span class="live-dot-lime" aria-hidden="true"></span>
+              <span class="header-strip-chip">04 — ENTER THE ARENA</span>
+            </div>
+            <div class="arena-header-actions">
+              <button type="button" class="btn-arena-viewall">VIEW ALL ↗</button>
+              <span class="arena-ticket-counter">01 / 03</span>
+              <span class="header-strip-counter">04 / 07</span>
+            </div>
+          </div>
+
+          <!-- Horizontal Sliding Tickets Viewport -->
+          <div class="arena-tickets-viewport">
+            <div class="arena-tickets-track" role="region" aria-label="Arena Passes Carousel">
+              <!-- Ticket 01: Near-Black Ticket (LIVE) -->
+              <div class="arena-pass-card ticket-black is-active" data-ticket="0" data-status="LIVE" tabindex="0">
+                <!-- Hard Duplicated SVG Shadow -->
+                <svg class="ticket-shape-svg ticket-shadow-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(8, 8, 12)" />
+                </svg>
+
+                <!-- Foreground Ticket SVG Shape with Notches -->
+                <svg class="ticket-shape-svg ticket-face-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path class="ticket-body-path" d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(8, 8, 12)" stroke="rgb(168, 230, 46)" stroke-width="2" />
+                  <!-- Dashed Perforation Line -->
+                  <line x1="380" y1="16" x2="380" y2="274" stroke="rgb(168, 230, 46)" stroke-width="2" stroke-dasharray="6 6" />
+                </svg>
+
+                <div class="ticket-content-split">
+                  <!-- Main Left Body (~68%) -->
+                  <div class="ticket-main-body">
+                    <div class="ticket-meta-row">
+                      <span class="ticket-pass-label">ARENA PASS · PASS_001</span>
+                      <span class="ticket-category-tag">ARTIFICIAL INTELLIGENCE</span>
+                    </div>
+                    <h3 class="ticket-title">AI INNOVATION</h3>
+                    <p class="ticket-desc">Build intelligent solutions for problems that matter with next-gen models.</p>
+                    <div class="ticket-chips-row">
+                      <span class="ticket-tech-chip">PyTorch</span>
+                      <span class="ticket-tech-chip">LLMs</span>
+                      <span class="ticket-tech-chip">FastAPI</span>
+                      <span class="ticket-prize-chip">$10,000 PRIZE</span>
+                    </div>
+                  </div>
+
+                  <!-- Right Stub (~32%) with Tear Animation -->
+                  <div class="ticket-stub-cell">
+                    <div class="stub-status-pill status-live">
+                      <span class="pulse-lime-dot"></span> LIVE NOW
+                    </div>
+                    <div class="stub-countdown-block">
+                      <span class="countdown-label">TIME REMAINING</span>
+                      <strong class="countdown-digits">03d 14h 22m 10s</strong>
+                    </div>
+                    <div class="stub-slots-block">
+                      <div class="slots-label-row">
+                        <span>SLOTS</span>
+                        <span>84% FULL</span>
+                      </div>
+                      <div class="slots-bar-track">
+                        <div class="slots-bar-fill" style="width: 84%;"></div>
+                      </div>
+                    </div>
+                    <!-- Flat SVG Barcode -->
+                    <div class="stub-barcode-wrap" aria-hidden="true">
+                      <svg class="stub-barcode-svg" viewBox="0 0 120 28">
+                        <rect x="0" y="0" width="3" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="5" y="0" width="6" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="14" y="0" width="2" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="18" y="0" width="8" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="29" y="0" width="4" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="36" y="0" width="2" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="42" y="0" width="6" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="52" y="0" width="3" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="58" y="0" width="7" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="68" y="0" width="4" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="75" y="0" width="3" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="82" y="0" width="6" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="91" y="0" width="2" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="96" y="0" width="8" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="108" y="0" width="4" height="28" fill="rgb(255, 255, 255)" />
+                        <rect x="115" y="0" width="3" height="28" fill="rgb(255, 255, 255)" />
+                      </svg>
+                    </div>
+                    <button type="button" class="btn-ticket-join" data-target-url="register.html">JOIN ARENA ↗</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ticket 02: Violet Ticket (OPEN) -->
+              <div class="arena-pass-card ticket-violet is-next" data-ticket="1" data-status="OPEN" tabindex="0">
+                <svg class="ticket-shape-svg ticket-shadow-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(8, 8, 12)" />
+                </svg>
+                <svg class="ticket-shape-svg ticket-face-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path class="ticket-body-path" d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(118, 101, 255)" stroke="rgb(8, 8, 12)" stroke-width="2" />
+                  <line x1="380" y1="16" x2="380" y2="274" stroke="rgb(8, 8, 12)" stroke-width="2" stroke-dasharray="6 6" />
+                </svg>
+
+                <div class="ticket-content-split">
+                  <div class="ticket-main-body">
+                    <div class="ticket-meta-row">
+                      <span class="ticket-pass-label">ARENA PASS · PASS_002</span>
+                      <span class="ticket-category-tag">WEB DEVELOPMENT</span>
+                    </div>
+                    <h3 class="ticket-title">FUTURE WEB</h3>
+                    <p class="ticket-desc">Design and ship high-velocity applications using modern fullstack engines.</p>
+                    <div class="ticket-chips-row">
+                      <span class="ticket-tech-chip">React</span>
+                      <span class="ticket-tech-chip">Wasm</span>
+                      <span class="ticket-tech-chip">Rust</span>
+                      <span class="ticket-prize-chip">$8,000 PRIZE</span>
+                    </div>
+                  </div>
+
+                  <div class="ticket-stub-cell">
+                    <div class="stub-status-pill status-open">
+                      <span>OPEN ENTRY</span>
+                    </div>
+                    <div class="stub-countdown-block">
+                      <span class="countdown-label">REGISTRATION CLOSES</span>
+                      <strong class="countdown-digits">08d 06h 45m 30s</strong>
+                    </div>
+                    <div class="stub-slots-block">
+                      <div class="slots-label-row">
+                        <span>SLOTS</span>
+                        <span>62% FULL</span>
+                      </div>
+                      <div class="slots-bar-track">
+                        <div class="slots-bar-fill" style="width: 62%;"></div>
+                      </div>
+                    </div>
+                    <div class="stub-barcode-wrap" aria-hidden="true">
+                      <svg class="stub-barcode-svg" viewBox="0 0 120 28">
+                        <rect x="0" y="0" width="4" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="6" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="12" y="0" width="6" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="22" y="0" width="2" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="28" y="0" width="7" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="38" y="0" width="4" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="46" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="52" y="0" width="8" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="64" y="0" width="2" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="70" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="78" y="0" width="6" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="88" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="94" y="0" width="6" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="104" y="0" width="4" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="112" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                      </svg>
+                    </div>
+                    <button type="button" class="btn-ticket-join" data-target-url="register.html">JOIN ARENA ↗</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ticket 03: White Ticket (UPCOMING) -->
+              <div class="arena-pass-card ticket-white is-next" data-ticket="2" data-status="UPCOMING" tabindex="0">
+                <svg class="ticket-shape-svg ticket-shadow-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(8, 8, 12)" />
+                </svg>
+                <svg class="ticket-shape-svg ticket-face-svg" viewBox="0 0 560 290" aria-hidden="true">
+                  <path class="ticket-body-path" d="M 0,0 L 372,0 A 14,14 0 0,0 388,0 L 560,0 L 560,290 L 388,290 A 14,14 0 0,0 372,290 L 0,290 Z" fill="rgb(255, 255, 255)" stroke="rgb(8, 8, 12)" stroke-width="2" />
+                  <line x1="380" y1="16" x2="380" y2="274" stroke="rgb(8, 8, 12)" stroke-width="2" stroke-dasharray="6 6" />
+                </svg>
+
+                <div class="ticket-content-split">
+                  <div class="ticket-main-body">
+                    <div class="ticket-meta-row">
+                      <span class="ticket-pass-label">ARENA PASS · PASS_003</span>
+                      <span class="ticket-category-tag">SMART TECHNOLOGY</span>
+                    </div>
+                    <h3 class="ticket-title">CAMPUS TECH</h3>
+                    <p class="ticket-desc">Create technology and embedded hardware that makes student life better.</p>
+                    <div class="ticket-chips-row">
+                      <span class="ticket-tech-chip">IoT</span>
+                      <span class="ticket-tech-chip">Next.js</span>
+                      <span class="ticket-tech-chip">Embedded</span>
+                      <span class="ticket-prize-chip">$6,000 PRIZE</span>
+                    </div>
+                  </div>
+
+                  <div class="ticket-stub-cell">
+                    <div class="stub-status-pill status-upcoming">
+                      <span>UPCOMING ARENA</span>
+                    </div>
+                    <div class="stub-countdown-block">
+                      <span class="countdown-label">LOCKS IN</span>
+                      <strong class="countdown-digits">18d 19h 10m 00s</strong>
+                    </div>
+                    <div class="stub-slots-block">
+                      <div class="slots-label-row">
+                        <span>SLOTS</span>
+                        <span>95% FULL</span>
+                      </div>
+                      <div class="slots-bar-track">
+                        <div class="slots-bar-fill" style="width: 95%;"></div>
+                      </div>
+                    </div>
+                    <div class="stub-barcode-wrap" aria-hidden="true">
+                      <svg class="stub-barcode-svg" viewBox="0 0 120 28">
+                        <rect x="0" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="8" y="0" width="2" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="14" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="22" y="0" width="8" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="34" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="40" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="48" y="0" width="2" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="54" y="0" width="6" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="64" y="0" width="4" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="72" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="78" y="0" width="7" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="88" y="0" width="3" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="94" y="0" width="5" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="103" y="0" width="6" height="28" fill="rgb(8, 8, 12)" />
+                        <rect x="113" y="0" width="4" height="28" fill="rgb(8, 8, 12)" />
+                      </svg>
+                    </div>
+                    <button type="button" class="btn-ticket-join" data-target-url="register.html">JOIN ARENA ↗</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom LIVE NOW Ticker Band -->
+          <div class="arena-live-ticker-band" aria-label="Live teams in the arena">
+            <div class="arena-live-ticker-track">
+              <span class="ticker-live-badge">LIVE ARENA:</span> TEAM ZERO · NEURALNETS · HACK_SYNDICATE · SHIPFAST · PROTO_CORP · REPO_RAIDERS · AGENT_X · BYTE_FORCE · <span class="ticker-live-badge">LIVE ARENA:</span> TEAM ZERO · NEURALNETS · HACK_SYNDICATE · SHIPFAST · PROTO_CORP · REPO_RAIDERS · 
+            </div>
+          </div>
+        </div>
+
+        <!-- Flat Modal for VIEW ALL ↗ -->
+        <div class="arena-all-modal-backdrop" aria-hidden="true">
+          <div class="arena-all-modal-box">
+            <div class="arena-modal-header">
+              <span class="arena-modal-title">ALL ARENA PASSES (03)</span>
+              <button type="button" class="arena-modal-close-btn" aria-label="Close modal">✕</button>
+            </div>
+            <div class="arena-modal-passes-list">
+              <div class="modal-pass-item">
+                <span class="modal-pass-badge live">LIVE</span>
+                <strong class="modal-pass-title">AI INNOVATION</strong>
+                <span class="modal-pass-prize">$10,000 PRIZE</span>
+                <a href="register.html" class="modal-pass-action">CLAIM PASS ↗</a>
+              </div>
+              <div class="modal-pass-item">
+                <span class="modal-pass-badge open">OPEN</span>
+                <strong class="modal-pass-title">FUTURE WEB</strong>
+                <span class="modal-pass-prize">$8,000 PRIZE</span>
+                <a href="register.html" class="modal-pass-action">CLAIM PASS ↗</a>
+              </div>
+              <div class="modal-pass-item">
+                <span class="modal-pass-badge upcoming">UPCOMING</span>
+                <strong class="modal-pass-title">CAMPUS TECH</strong>
+                <span class="modal-pass-prize">$6,000 PRIZE</span>
+                <a href="register.html" class="modal-pass-action">CLAIM PASS ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 THE MISSION: Solid Violet Section (Sticky Stage 200vh, z-index 2) -->
+      <section class="section-mission" data-section-name="05 MISSION">
+        <div class="mission-sticky-stage">
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip strip-theme-violet">
+            <div class="header-strip-left">
+              <span class="live-dot-white" aria-hidden="true"></span>
+              <span class="header-strip-chip">05 — THE MISSION</span>
+            </div>
+            <div class="header-strip-counter">05 / 07</div>
+          </div>
+
+          <!-- Parallax Background Ghost Watermark -->
+          <div class="mission-watermark-sweep outlined-watermark" aria-hidden="true">CAMPUSCODE</div>
+
+          <!-- Two Diagonal Flat Bands Crossing Behind Headline -->
+          <div class="mission-diagonal-band band-neg" aria-hidden="true">
+            <div class="diagonal-track track-neg">
+              <span>IDEAS → PRODUCTS → IMPACT → COMMUNITY → IDEAS → PRODUCTS → IMPACT → COMMUNITY → IDEAS → PRODUCTS → IMPACT → COMMUNITY → </span>
+            </div>
+          </div>
+          <div class="mission-diagonal-band band-pos" aria-hidden="true">
+            <div class="diagonal-track track-pos">
+              <span>IDEAS → PRODUCTS → IMPACT → COMMUNITY → IDEAS → PRODUCTS → IMPACT → COMMUNITY → IDEAS → PRODUCTS → IMPACT → COMMUNITY → </span>
+            </div>
+          </div>
+
+          <!-- Giant Flat 8-Point Star (Lime Outline, No Fill) -->
+          <div class="mission-star-wrapper" aria-hidden="true">
+            <svg class="mission-eight-point-star" viewBox="0 0 200 200" fill="none">
+              <polygon points="100,5 125,75 195,100 125,125 100,195 75,125 5,100 75,75" stroke="rgb(168, 230, 46)" stroke-width="4" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="mission-stage-body">
+            <!-- Left: Headline and Body -->
+            <div class="mission-content-box">
+              <h2 class="mission-fill-text">
+                <span class="mission-word">GREAT</span>
+                <span class="mission-word">IDEAS</span><br />
+                <span class="mission-word">NEED</span>
+                <span class="mission-word word-builders">BUILDERS.</span>
+              </h2>
+              <p class="mission-body-text">
+                Your university is full of people with ideas. CampusCode gives those ideas somewhere to go.
+              </p>
+
+              <!-- Three Flat Rotated Sticker Chips that Float and Swap on Hover -->
+              <div class="mission-stickers-row">
+                <div class="mission-sticker-chip sticker-idea" data-order="1">
+                  <span>01 IDEA</span>
+                  <b>→</b>
+                </div>
+                <div class="mission-sticker-chip sticker-build" data-order="2">
+                  <span>02 BUILD</span>
+                  <b>→</b>
+                </div>
+                <div class="mission-sticker-chip sticker-ship" data-order="3">
+                  <span>03 SHIP</span>
+                  <b>★</b>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Three Count-Up Stats -->
+            <div class="mission-stats-col">
+              <div class="mission-stat-item">
+                <div class="mission-stat-num counter-number" data-target-num="300" data-suffix="+">300+</div>
+                <span class="mission-stat-label">IDEAS PITCHED</span>
+              </div>
+              <div class="mission-stat-item">
+                <div class="mission-stat-num counter-number" data-target-num="40" data-suffix="+">40+</div>
+                <span class="mission-stat-label">TEAMS FORMED</span>
+              </div>
+              <div class="mission-stat-item">
+                <div class="mission-stat-num counter-number" data-target-num="12">12</div>
+                <span class="mission-stat-label">PROJECTS SHIPPED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drop Your Idea Board -->
+          <div class="mission-idea-board">
+            <div class="idea-board-header">
+              <span class="idea-board-badge">BOARD</span>
+              <span class="idea-board-title">DROP YOUR IDEA</span>
+              <span class="idea-board-sub">Share a concept with builders across campus</span>
+            </div>
+            <div class="idea-board-form">
+              <input type="text" class="idea-board-input" placeholder="Type a problem or concept..." maxlength="80" aria-label="Drop your idea" />
+              <button type="button" class="idea-board-submit-btn">ADD IDEA ↗</button>
+            </div>
+            <div class="idea-board-notes-area">
+              <!-- Rendered Sticky Notes -->
+            </div>
+          </div>
+
+          <!-- Near-Black Ticker Band at Bottom -->
+          <div class="mission-ticker-band" aria-label="Projects now building ticker">
+            <div class="mission-ticker-track">
+              <span class="ticker-prefix">NOW BUILDING:</span> CAMPUSMAP · STUDYSYNC · FIXIT AI · HACKFLOW · ARENAMETRICS · AGENTGRID · REPOWATCH · SKILLFORGE · <span class="ticker-prefix">NOW BUILDING:</span> CAMPUSMAP · STUDYSYNC · FIXIT AI · HACKFLOW · ARENAMETRICS · AGENTGRID · 
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 THE NETWORK: Sticky Stage (400vh wrapper containing 100vh sticky stage) -->
+      <section class="section-community" data-section-name="06 NETWORK">
+        <div class="network-sticky-stage">
+          <!-- Standard Section Header Strip -->
+          <div class="section-header-strip strip-theme-lime">
+            <div class="header-strip-left">
+              <span class="live-dot-black" aria-hidden="true"></span>
+              <span class="header-strip-chip">06 — THE NETWORK</span>
+            </div>
+            <div class="header-strip-counter">06 / 07</div>
+          </div>
+
+          <div class="network-stage-body">
+            <div class="network-layout-grid">
+              <!-- Left Column: Headline, Tabs, Counter, Toast, Profile Card, Scroll Hint -->
+              <div class="network-left-block">
+                <h2 class="network-main-title">
+                  FIND YOUR<br />PEOPLE.
+                </h2>
+                <div class="network-lines-card">
+                  <button type="button" class="network-tab-line is-active" data-role="DEVELOPERS">Build with developers.</button>
+                  <button type="button" class="network-tab-line" data-role="DESIGNERS">Think with designers.</button>
+                  <button type="button" class="network-tab-line" data-role="BUILDERS">Compete with builders.</button>
+                </div>
+                <div class="network-counter-stat">
+                  <div class="stat-big-num counter-number" data-target-num="2400" data-suffix="+">2,400+</div>
+                  <span class="stat-big-label">BUILDERS</span>
+                </div>
+
+                <!-- Rotating 4s Activity Toast Box -->
+                <div class="network-activity-toast-box" aria-live="polite">
+                  <div class="activity-toast-indicator"></div>
+                  <span class="activity-toast-text">Priya S. joined AI Innovation team</span>
+                </div>
+
+                <!-- Profile Card in Left Column Under Tabs (Never Overlaps Wheel) -->
+                <div class="network-profile-card">
+                  <div class="profile-card-wipe" aria-hidden="true"></div>
+                  <div class="profile-card-role">DEVELOPERS</div>
+                  <div class="profile-skill-chips">
+                    <span class="skill-chip">Rust</span>
+                    <span class="skill-chip">React</span>
+                    <span class="skill-chip">PyTorch</span>
+                  </div>
+                  <div class="profile-member-count">1,280 Verified Members</div>
+                  <button type="button" class="btn-network-request">SEND REQUEST ↗</button>
+                </div>
+
+                <!-- Flat Hint at Bottom-Left: SCROLL TO SPIN THE WHEEL and 5-step indicator -->
+                <div class="network-scroll-hint">
+                  <div class="network-hint-label">
+                    <span>SCROLL TO SPIN THE WHEEL</span>
+                    <span class="network-hint-arrow" aria-hidden="true">↓</span>
+                  </div>
+                  <div class="network-step-indicator" aria-label="Wheel position indicator">
+                    <span class="network-step-dot is-active" data-step="0"></span>
+                    <span class="network-step-dot" data-step="1"></span>
+                    <span class="network-step-dot" data-step="2"></span>
+                    <span class="network-step-dot" data-step="3"></span>
+                    <span class="network-step-dot" data-step="4"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Giant Flat Rotating Wheel (~90vh diameter, centered on right edge) -->
+              <div class="network-right-block">
+                <!-- Flat black pointer triangle at left edge pointing to active node (at 9 o'clock) -->
+                <div class="wheel-pointer-triangle" aria-hidden="true"></div>
+
+                <div class="network-giant-wheel-container">
+                  <div class="network-giant-wheel">
+                    <!-- SVG Wheel Structure: Thick Rim, 40 Gear Teeth, 5 Spokes with Pulses -->
+                    <svg class="giant-wheel-svg" viewBox="0 0 1000 1000" aria-hidden="true">
+                      <!-- 40 Gear Teeth Container -->
+                      <g class="wheel-gear-teeth-group"></g>
+
+                      <!-- Outer Thick Black Rim -->
+                      <circle cx="500" cy="500" r="440" fill="none" stroke="rgb(8, 8, 12)" stroke-width="18" />
+                      <circle cx="500" cy="500" r="428" fill="none" stroke="rgb(168, 230, 46)" stroke-width="4" />
+                      <circle cx="500" cy="500" r="416" fill="none" stroke="rgb(8, 8, 12)" stroke-width="6" />
+
+                      <!-- 5 Spokes Connecting Hub to Rim -->
+                      <line class="wheel-spoke spoke-0" x1="500" y1="500" x2="500" y2="84" stroke="rgb(8, 8, 12)" stroke-width="8" stroke-linecap="square" />
+                      <line class="wheel-spoke spoke-1" x1="500" y1="500" x2="896" y2="371" stroke="rgb(8, 8, 12)" stroke-width="8" stroke-linecap="square" />
+                      <line class="wheel-spoke spoke-2" x1="500" y1="500" x2="745" y2="838" stroke="rgb(8, 8, 12)" stroke-width="8" stroke-linecap="square" />
+                      <line class="wheel-spoke spoke-3" x1="500" y1="500" x2="255" y2="838" stroke="rgb(8, 8, 12)" stroke-width="8" stroke-linecap="square" />
+                      <line class="wheel-spoke spoke-4" x1="500" y1="500" x2="104" y2="371" stroke="rgb(8, 8, 12)" stroke-width="8" stroke-linecap="square" />
+
+                      <!-- Small Flat Squares Pulsing Along Spokes -->
+                      <rect class="spoke-pulse pulse-0" width="16" height="16" fill="rgb(8, 8, 12)" x="492" y="270" />
+                      <rect class="spoke-pulse pulse-1" width="16" height="16" fill="rgb(8, 8, 12)" x="680" y="420" />
+                      <rect class="spoke-pulse pulse-2" width="16" height="16" fill="rgb(8, 8, 12)" x="610" y="650" />
+                      <rect class="spoke-pulse pulse-3" width="16" height="16" fill="rgb(8, 8, 12)" x="380" y="650" />
+                      <rect class="spoke-pulse pulse-4" width="16" height="16" fill="rgb(8, 8, 12)" x="300" y="420" />
+                    </svg>
+
+                    <!-- Hub at center: CC with counter-spinning lime ring -->
+                    <div class="wheel-hub-container">
+                      <div class="wheel-hub-ring-counter"></div>
+                      <div class="wheel-hub-center">CC</div>
+                    </div>
+
+                    <!-- 5 Node Discs on Wheel (labels counter-rotate to stay upright) -->
+                    <div class="wheel-node-disc node-slot-0 is-active" data-role="DEVELOPERS" data-idx="0">
+                      <div class="wheel-node-inner">
+                        <span class="wheel-node-label">DEVELOPERS</span>
+                      </div>
+                    </div>
+                    <div class="wheel-node-disc node-slot-1" data-role="DESIGNERS" data-idx="1">
+                      <div class="wheel-node-inner">
+                        <span class="wheel-node-label">DESIGNERS</span>
+                      </div>
+                    </div>
+                    <div class="wheel-node-disc node-slot-2" data-role="BUILDERS" data-idx="2">
+                      <div class="wheel-node-inner">
+                        <span class="wheel-node-label">BUILDERS</span>
+                      </div>
+                    </div>
+                    <div class="wheel-node-disc node-slot-3" data-role="MENTORS" data-idx="3">
+                      <div class="wheel-node-inner">
+                        <span class="wheel-node-label">MENTORS</span>
+                      </div>
+                    </div>
+                    <div class="wheel-node-disc node-slot-4" data-role="ORGANIZERS" data-idx="4">
+                      <div class="wheel-node-inner">
+                        <span class="wheel-node-label">ORGANIZERS</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flat Marquee of Avatar Chips -->
+          <div class="network-avatar-marquee" aria-hidden="true">
+            <div class="avatar-marquee-track">
+              <div class="avatar-chip"><span class="avatar-circle">AK</span><span>Aarav K.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">PS</span><span>Priya S.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">MR</span><span>Marcus R.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">LT</span><span>Liam T.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">NC</span><span>Nina C.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">DZ</span><span>David Z.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">AK</span><span>Aarav K.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">PS</span><span>Priya S.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">MR</span><span>Marcus R.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">LT</span><span>Liam T.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">NC</span><span>Nina C.</span></div>
+              <div class="avatar-chip"><span class="avatar-circle">DZ</span><span>David Z.</span></div>
+            </div>
+          </div>
+
+          <!-- Flat Toast Container for Feedback -->
+          <div class="flat-network-toast" role="status" aria-live="polite">Request sent (demo)</div>
+
+          <!-- Hard Horizontal Wipe Bar into 07 Join Us Today -->
+          <div class="network-wipe-curtain" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- 07 JOIN US TODAY: Solid Near-Black Section (z-index 2) -->
+      <section class="section-cta" data-section-name="07 JOIN">
+        <!-- Standard Section Header Strip -->
+        <div class="section-header-strip strip-theme-dark">
+          <div class="header-strip-left">
+            <span class="live-dot-lime" aria-hidden="true"></span>
+            <span class="header-strip-chip">07 — JOIN US TODAY</span>
+          </div>
+          <div class="header-strip-counter">07 / 07</div>
+        </div>
+
+        <div class="ready-content-container">
+          <!-- 4 Corner Lists -->
+          <div class="cta-corner-list corner-top-left">
+            <h4 class="corner-list-title">STUDENTS</h4>
+            <ul>
+              <li>Teams</li>
+              <li>Mentors</li>
+              <li>Peers</li>
+            </ul>
+          </div>
+
+          <div class="cta-corner-list corner-top-right">
+            <h4 class="corner-list-title">IDEAS</h4>
+            <ul>
+              <li>Hacks</li>
+              <li>Prototypes</li>
+              <li>Launches</li>
+            </ul>
+          </div>
+
+          <div class="cta-corner-list corner-bottom-left">
+            <h4 class="corner-list-title">COMMUNITY</h4>
+            <ul>
+              <li>Chennai</li>
+              <li>Pan-India</li>
+              <li>Global</li>
+            </ul>
+          </div>
+
+          <div class="cta-corner-list corner-bottom-right">
+            <h4 class="corner-list-title">IMPACT</h4>
+            <ul>
+              <li>Prizes</li>
+              <li>Grants</li>
+              <li>Internships</li>
+            </ul>
+          </div>
+
+          <!-- Center Content: Headline, Text, and Magnetic Lime Button -->
+          <div class="cta-center-block">
+            <h2 class="ready-main-headline">
+              JOIN CAMPUSCODE.
+            </h2>
+            <p class="ready-subtext">The arena is open. Build something real.</p>
+            <div class="ready-action-stage">
+              <a href="register.html" class="ready-huge-lime-btn">
+                <span>GET STARTED</span>
+                <b>↗</b>
+              </a>
+              <div class="flat-square-confetti-stage" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 FOOTER: White Background, Near-Black Text, Outlined Watermark, Columns -->
+      <footer class="site-footer" data-section-name="FOOTER">
+        <div class="footer-top-grid">
+          <div class="footer-brand">
+            <div class="brand-link">
+              <div class="brand-mark" aria-hidden="true">
+                <span class="bar-black"></span>
+                <span class="bar-violet"></span>
+                <span class="bar-lime"></span>
+              </div>
+              <div class="brand-text">
+                <strong class="footer-brand-title">CAMPUSCODE</strong>
+                <small class="footer-brand-sub">HACKATHON ARENA</small>
+              </div>
+            </div>
+            <p class="footer-brand-desc">
+              The student hackathon arena. You build the idea, we run the competition.
+            </p>
+
+            <div class="footer-social-icons">
+              <a href="https://github.com" target="_blank" rel="noopener" class="social-icon-box" aria-label="GitHub">GH</a>
+              <a href="https://discord.com" target="_blank" rel="noopener" class="social-icon-box" aria-label="Discord">DC</a>
+              <a href="https://x.com" target="_blank" rel="noopener" class="social-icon-box" aria-label="X Twitter">X</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-box" aria-label="LinkedIn">IN</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>PRODUCT</h4>
+            <ul>
+              <li><button type="button" data-target="section-about">About</button></li>
+              <li><button type="button" data-target="section-hackathons">Hackathons</button></li>
+              <li><button type="button" data-target="section-how">How it works</button></li>
+              <li><button type="button" data-target="section-community">Community</button></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>BUILDERS</h4>
+            <ul>
+              <li><a href="register.html">Students</a></li>
+              <li><a href="register.html">Teams</a></li>
+              <li><a href="register.html">Organizers</a></li>
+              <li><a href="register.html">Developers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>GUIDES</h4>
+            <ul>
+              <li><button type="button" class="btn-open-modal" data-modal="rules">Hackathon Rules</button></li>
+              <li><button type="button" class="btn-open-modal" data-modal="faq">FAQ</button></li>
+              <li><button type="button" class="btn-open-modal" data-modal="support">Support</button></li>
+              <li><button type="button" class="btn-open-modal" data-modal="contact">Contact</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-giant-watermark" aria-hidden="true">CAMPUSCODE</div>
+
+        <div class="footer-bottom-bar">
+          <div><span class="live-dot-black"></span>ALL SYSTEMS OPERATIONAL</div>
+          <div>© 2026 CAMPUSCODE</div>
+          <div class="footer-legal-links">
+            <button type="button" class="btn-open-modal" data-modal="terms">Terms</button>
+            <span>·</span>
+            <button type="button" class="btn-open-modal" data-modal="privacy">Privacy</button>
+            <span>·</span>
+            <a href="mailto:campuscode@gmail.com">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Flat Accessible Modal Component -->
+    <div class="flat-accessible-modal is-modal-closed" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-card">
+        <div class="modal-card-top">
+          <span class="live-dot-lime" aria-hidden="true"></span>
+          <h3 class="modal-card-title">MODAL TITLE</h3>
+          <button type="button" class="modal-close-btn" aria-label="Close dialog">✕</button>
+        </div>
+        <div class="modal-card-sub">MODAL SUBTITLE</div>
+        <div class="modal-card-body">MODAL BODY CONTENT</div>
+        <div class="modal-card-footer">
+          <button type="button" class="btn-flat-black modal-done-btn">CLOSE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Scripts -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

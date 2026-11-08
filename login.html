@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login · CampusCode Hackathon Arena</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="auth-page-login">
+    <!-- Hard Horizontal Wipe Curtain -->
+    <div class="auth-wipe-curtain" aria-hidden="true">
+      <div class="curtain-layer-black"></div>
+      <div class="curtain-layer-lime"></div>
+    </div>
+
+    <div class="auth-page-container login-route-container">
+      <!-- Top Header Strip -->
+      <header class="auth-header">
+        <a href="index.html" class="brand-link" aria-label="CampusCode home">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="bar-black"></span>
+            <span class="bar-lime"></span>
+            <span class="bar-black"></span>
+          </div>
+          <div class="brand-text">
+            <strong>CAMPUSCODE</strong>
+            <small style="color: var(--cc-lime-dark);">HACKATHON ARENA</small>
+          </div>
+        </a>
+
+        <div>
+          <a href="index.html" class="auth-back-btn">
+            <span>←</span>
+            <span>BACK TO HOME</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- 50/50 Split Main Grid -->
+      <main class="auth-grid-split login-grid-split">
+        <!-- Left Column: Near-Black Branding Card with Orbit, Road & Bus, Tip, Stats -->
+        <section class="auth-left-col login-left-panel">
+          <!-- Drifting Floating Squares in Background -->
+          <div class="drifting-squares-wrap" aria-hidden="true">
+            <div class="drifting-square drift-sq-1"></div>
+            <div class="drifting-square drift-sq-2"></div>
+            <div class="drifting-square drift-sq-3"></div>
+          </div>
+
+          <div class="auth-left-content">
+            <!-- Top: Orbit Animation & Eyebrow Tag -->
+            <div>
+              <div class="auth-orbit-wrap">
+                <div class="auth-orbit-anim" aria-hidden="true">
+                  <div class="auth-orbit-pulse-lime"></div>
+                  <div class="auth-orbit-ring">
+                    <span class="auth-orbit-dot"></span>
+                  </div>
+                  <span class="auth-orbit-core">CC</span>
+                </div>
+                <div>
+                  <span class="auth-eyebrow-tag">ARENA ACCESS · 01 / 02</span>
+                  <div style="font-size: 11px; font-weight: 800; color: rgb(255, 255, 255); margin-top: 2px;">AUTHENTICATION SECURE</div>
+                </div>
+              </div>
+
+              <!-- Giant Outlined Title -->
+              <h1 class="auth-giant-title">ENTER THE ARENA</h1>
+
+              <p class="auth-desc-text">
+                Sign in to continue building, collaborating and competing with the CampusCode student community.
+              </p>
+            </div>
+
+            <!-- Middle: Tip Card -->
+            <div class="auth-rotating-tip" aria-live="polite">
+              <span class="tip-eyebrow">ARENA INTEL // TIP</span>
+              <p class="tip-text">Verify with your PIN to enter the arena.</p>
+            </div>
+
+            <!-- Bottom: 3 Count-up Stats Row & Road with Tiny Looping Bus -->
+            <div>
+              <div class="auth-stats-row">
+                <div class="auth-stat-box">
+                  <span class="auth-stat-val" data-val="2400" data-suffix="+">2,400+</span>
+                  <span class="auth-stat-lbl">BUILDERS</span>
+                </div>
+                <div class="auth-stat-box">
+                  <span class="auth-stat-val" data-val="48" data-suffix="">48</span>
+                  <span class="auth-stat-lbl">CHALLENGES</span>
+                </div>
+                <div class="auth-stat-box">
+                  <span class="auth-stat-val" data-val="100" data-suffix="%">100%</span>
+                  <span class="auth-stat-lbl">VERIFIED</span>
+                </div>
+              </div>
+
+              <!-- Road line with tiny looping bus -->
+              <div class="auth-road-track-left" aria-hidden="true">
+                <div class="auth-road-dashes"></div>
+                <div class="auth-road-tiny-bus">
+                  <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+                    <rect x="1" y="2" width="26" height="11" rx="2" fill="rgb(11, 11, 18)" stroke="rgb(182, 229, 79)" stroke-width="1"/>
+                    <rect x="4" y="4" width="4" height="4" fill="rgb(255, 255, 255)"/>
+                    <rect x="10" y="4" width="4" height="4" fill="rgb(255, 255, 255)"/>
+                    <rect x="16" y="4" width="4" height="4" fill="rgb(255, 255, 255)"/>
+                    <circle cx="7" cy="13" r="2.5" fill="rgb(182, 229, 79)"/>
+                    <circle cx="21" cy="13" r="2.5" fill="rgb(182, 229, 79)"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: White Form Card with Hard Shadow -->
+        <section class="auth-right-col login-right-card">
+          <!-- Success Confetti Animation Stage -->
+          <div class="auth-confetti-stage" aria-hidden="true"></div>
+
+          <!-- Step 1: Credentials & Captcha & Bus Track -->
+          <div class="auth-step-stage login-step-1">
+            <div class="auth-form-head">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime-dark);">EXISTING ACCOUNT</span>
+                <h2 class="auth-form-h2">LOGIN</h2>
+                <p class="auth-form-sub">Access your CampusCode student workspace.</p>
+              </div>
+              <div class="auth-card-code">CC<br />01</div>
+            </div>
+
+            <form class="auth-form login-form-step1" novalidate>
+              <!-- 1. Email Address -->
+              <div class="form-group-floating">
+                <label class="form-label">EMAIL ADDRESS</label>
+                <div class="form-input-wrap">
+                  <span class="input-icon">@</span>
+                  <input class="form-input login-input-email" type="email" placeholder="you@campus.edu" required autocomplete="email" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+              </div>
+
+              <!-- 2. Password with Show/Hide -->
+              <div class="form-group-floating">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <label class="form-label" style="margin-bottom: 0;">PASSWORD</label>
+                  <button type="button" class="btn-toggle-password" style="background: none; border: none; font-size: 10px; font-weight: 800; color: rgb(8, 8, 12); cursor: pointer; text-decoration: underline;">SHOW / HIDE</button>
+                </div>
+                <div class="form-input-wrap">
+                  <span class="input-icon">•</span>
+                  <input class="form-input login-input-password" type="password" placeholder="Enter password (8+ chars)" required autocomplete="current-password" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+              </div>
+
+              <!-- 3. Verification Code (Captcha) Block -->
+              <div class="form-group-floating auth-captcha-block login-captcha-block">
+                <label class="form-label">VERIFICATION CODE</label>
+                <div class="captcha-render-row">
+                  <canvas class="auth-captcha-canvas" width="190" height="64" role="img" aria-label="Verification code image"></canvas>
+                  <button type="button" class="btn-refresh-captcha" aria-label="New code" title="New code">
+                    <span aria-hidden="true">↻</span>
+                    <span>NEW</span>
+                  </button>
+                </div>
+                <div class="form-input-wrap captcha-input-wrap" style="margin-top: 8px;">
+                  <span class="input-icon">✦</span>
+                  <input class="form-input auth-input-captcha login-input-captcha" type="text" placeholder="Enter the code" autocomplete="off" maxlength="5" autocapitalize="characters" required />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+                <div class="captcha-hint-row">
+                  <button type="button" class="btn-captcha-help-link">Can't read it? Get a new code</button>
+                </div>
+              </div>
+
+              <!-- 4. The Bus Track -->
+              <div class="login-bus-track" role="region" aria-label="Arena transport status">
+                <div class="bus-track-progress-fill" aria-hidden="true"></div>
+                <div class="bus-track-road-dashes" aria-hidden="true"></div>
+
+                <div class="bus-track-station station-you">
+                  <span class="station-dot"></span>
+                  <span class="station-label">YOU</span>
+                </div>
+
+                <div class="bus-track-vehicle-wrap">
+                  <div class="bus-zzz-text" aria-hidden="true">Zzz</div>
+                  <div class="bus-smoke-puffs" aria-hidden="true">
+                    <span class="smoke-puff puff-1"></span>
+                    <span class="smoke-puff puff-2"></span>
+                    <span class="smoke-puff puff-3"></span>
+                  </div>
+                  <svg class="bus-svg" width="58" height="34" viewBox="0 0 58 34" fill="none" aria-hidden="true">
+                    <rect x="2" y="4" width="52" height="22" rx="4" fill="rgb(11, 11, 18)" stroke="rgb(11, 11, 18)" stroke-width="1.5"/>
+                    <rect x="7" y="7" width="9" height="8" rx="1" fill="rgb(255, 255, 255)"/>
+                    <rect x="19" y="7" width="9" height="8" rx="1" fill="rgb(255, 255, 255)"/>
+                    <rect x="31" y="7" width="9" height="8" rx="1" fill="rgb(255, 255, 255)"/>
+                    <rect x="43" y="7" width="8" height="8" rx="1" fill="rgb(255, 255, 255)"/>
+                    <rect x="18" y="18" width="3" height="5" transform="skewX(-18)" fill="rgb(11, 11, 18)"/>
+                    <rect x="23" y="18" width="3" height="5" transform="skewX(-18)" fill="rgb(182, 229, 79)"/>
+                    <rect x="28" y="18" width="3" height="5" transform="skewX(-18)" fill="rgb(255, 255, 255)"/>
+                    <rect x="52" y="16" width="2" height="4" fill="rgb(182, 229, 79)"/>
+                    <g class="bus-wheel wheel-front">
+                      <circle cx="43" cy="26" r="5" fill="rgb(11, 11, 18)"/>
+                      <circle cx="43" cy="26" r="3" fill="rgb(255, 255, 255)"/>
+                      <circle cx="43" cy="26" r="1.5" fill="rgb(182, 229, 79)"/>
+                      <line x1="40" y1="26" x2="46" y2="26" stroke="rgb(11, 11, 18)" stroke-width="0.8"/>
+                    </g>
+                    <g class="bus-wheel wheel-rear">
+                      <circle cx="15" cy="26" r="5" fill="rgb(11, 11, 18)"/>
+                      <circle cx="15" cy="26" r="3" fill="rgb(255, 255, 255)"/>
+                      <circle cx="15" cy="26" r="1.5" fill="rgb(182, 229, 79)"/>
+                      <line x1="12" y1="26" x2="18" y2="26" stroke="rgb(11, 11, 18)" stroke-width="0.8"/>
+                    </g>
+                  </svg>
+                </div>
+
+                <div class="bus-track-station station-arena">
+                  <div class="station-flag" aria-hidden="true">
+                    <span class="flag-pole"></span>
+                    <span class="flag-banner">⚑</span>
+                  </div>
+                  <span class="station-label">ARENA</span>
+                </div>
+
+                <div class="bus-track-status" aria-live="polite">READY</div>
+              </div>
+
+              <!-- Inline Error Notice -->
+              <div class="login-error-container" style="display: none;">
+                <div class="flat-error-notice login-error-text">PLEASE ENTER A VALID EMAIL ADDRESS.</div>
+              </div>
+
+              <!-- 5. Submit Button with Label LOGIN -->
+              <button type="submit" class="btn-auth-primary btn-submit-login-step1">
+                <span class="btn-label-text">LOGIN</span>
+                <span class="btn-loading-squares" style="display: none;" aria-hidden="true">
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                </span>
+              </button>
+
+              <!-- 6. Forgot Password and Sign Up Links -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 11px;">
+                <button type="button" class="btn-trigger-forgot" style="background: none; border: none; font-weight: 700; color: var(--text-dim); cursor: pointer;">
+                  FORGOT PASSWORD?
+                </button>
+                <div>
+                  <span style="color: var(--text-muted);">NEW HERE?</span>
+                  <a href="register.html" class="auth-switch-link" style="color: rgb(8, 8, 12); font-weight: 800; text-decoration: underline; margin-left: 4px;">SIGN UP ↗</a>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 2: Verification PIN (Preserved) -->
+          <div class="auth-step-stage login-step-2" style="display: none;">
+            <div class="auth-form-head">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime-dark);">STEP 02 // SECURITY</span>
+                <h2 class="auth-form-h2">VERIFY YOUR PIN</h2>
+                <p class="auth-form-sub">We sent a 6-digit PIN to the email you entered: <strong class="masked-email-display" style="color: rgb(8, 8, 12);">a***@campus.edu</strong></p>
+              </div>
+              <div class="auth-card-code">PIN<br />02</div>
+            </div>
+
+            <form class="auth-form pin-verification-form" novalidate>
+              <!-- 6 Square PIN Digits -->
+              <div class="form-group-floating">
+                <div class="pin-inputs-row" role="group" aria-label="Verification PIN digits">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-1" aria-label="PIN digit 1 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-2" aria-label="PIN digit 2 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-3" aria-label="PIN digit 3 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-4" aria-label="PIN digit 4 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-5" aria-label="PIN digit 5 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-6" aria-label="PIN digit 6 of 6" autocomplete="one-time-code" />
+                </div>
+                <p class="pin-demo-notice" style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">Demo mode: no email is sent.</p>
+              </div>
+
+              <!-- PIN Error Notice -->
+              <div class="pin-error-container" style="display: none;">
+                <div class="flat-error-notice pin-error-text">INCORRECT PIN. 2 ATTEMPTS LEFT</div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-auth-primary btn-submit-pin" disabled>
+                <span class="btn-label-text">VERIFY AND LOGIN →</span>
+                <span class="btn-loading-squares" style="display: none;" aria-hidden="true">
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                </span>
+              </button>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 11px;">
+                <button type="button" class="btn-resend-pin" disabled style="background: none; border: none; font-weight: 800; color: var(--text-dim); cursor: not-allowed;">
+                  RESEND IN 30s
+                </button>
+                <button type="button" class="btn-change-email" style="background: none; border: none; font-weight: 800; color: rgb(8, 8, 12); cursor: pointer; text-decoration: underline;">
+                  ← CHANGE EMAIL
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div style="font-size: 10px; font-weight: 700; color: var(--text-dim); display: flex; justify-content: space-between; margin-top: 20px; padding-top: 12px; border-top: 1px solid rgba(8, 8, 12, 0.1);">
+            <span>SYSTEM ENCRYPTED</span>
+            <span>SECURE SANDBOX</span>
+            <span>2026</span>
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom Footer -->
+      <footer style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-dim); margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(8, 8, 12, 0.15);">
+        <span>CAMPUSCODE © 2026</span>
+        <span>LEARN · BUILD · COMPETE · SHIP</span>
+        <span>ALL SYSTEMS OPERATIONAL</span>
+      </footer>
+    </div>
+
+    <!-- DEMO INBOX Toast (Bottom-Right Corner) -->
+    <aside class="demo-inbox-toast" aria-live="assertive" style="display: none;">
+      <div class="demo-inbox-head">
+        <span class="live-dot-lime" aria-hidden="true"></span>
+        <span class="demo-inbox-title">DEMO INBOX</span>
+      </div>
+      <div class="demo-inbox-body">
+        <span class="demo-inbox-text">Demo PIN: <strong class="demo-inbox-pin">------</strong></span>
+        <button type="button" class="btn-copy-pin" aria-label="Copy verification PIN to clipboard">COPY</button>
+      </div>
+    </aside>
+
+    <!-- Client Scripts -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

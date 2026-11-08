@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard · CampusCode Hackathon Arena</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <!-- Responsive Dashboard Black Sidebar (White Text & Lime Active Item) -->
+      <aside class="dashboard-sidebar">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <a href="index.html" class="brand-link" aria-label="CampusCode home">
+              <div class="brand-mark" aria-hidden="true">
+                <span class="bar-black" style="background: rgb(255, 255, 255);"></span>
+                <span class="bar-lime"></span>
+                <span class="bar-black" style="background: rgb(255, 255, 255);"></span>
+              </div>
+              <div class="brand-text">
+                <strong style="color: rgb(255, 255, 255);">CAMPUSCODE</strong>
+                <small style="color: var(--cc-lime);">HACKATHON ARENA</small>
+              </div>
+            </a>
+            <button type="button" class="btn-sidebar-collapse" aria-label="Toggle compact sidebar">◀</button>
+            <button type="button" class="dashboard-sidebar-close" aria-label="Close sidebar" style="background: none; border: none; color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; display: none;">✕</button>
+          </div>
+
+          <div class="sidebar-category-label">
+            WORKSPACE
+          </div>
+          <nav>
+            <ul class="sidebar-nav-list">
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item active">
+                  <span>✦</span>
+                  <span class="nav-label">Overview</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>◈</span>
+                  <span class="nav-label">Events</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>◒</span>
+                  <span class="nav-label">My Events</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>⚡</span>
+                  <span class="nav-label">HackMate AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>◎</span>
+                  <span class="nav-label">IdeaCheck AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>★</span>
+                  <span class="nav-label">Certificates</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>▣</span>
+                  <span class="nav-label">Digital Card</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>⚙</span>
+                  <span class="nav-label">RuleBot AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>📖</span>
+                  <span class="nav-label">Student Guide</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>✉</span>
+                  <span class="nav-label">Official Communication</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>🔔</span>
+                  <span class="nav-label">Notifications</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>?</span>
+                  <span class="nav-label">Help & Support</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="sidebar-nav-item">
+                  <span>👤</span>
+                  <span class="nav-label">Profile</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <div class="sidebar-category-label">
+            ACCOUNT
+          </div>
+          <div class="sidebar-user-card">
+            <div class="user-initials dashboard-user-initials">BU</div>
+            <div class="sidebar-user-details" style="flex: 1; overflow: hidden;">
+              <strong class="dashboard-user-name-display" style="font-size: 13px; display: block; color: rgb(255, 255, 255); white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">BUILDER</strong>
+              <span style="font-size: 10px; font-weight: 800; color: var(--cc-lime); background: rgba(168, 230, 46, 0.15); padding: 2px 6px; border-radius: 4px; display: inline-block;">STUDENT</span>
+            </div>
+          </div>
+          <a href="index.html" class="btn-sidebar-logout" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; box-sizing: border-box; text-align: center; padding: 10px; font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; background: rgba(255, 255, 255, 0.05);">
+            <span>↪</span>
+            <span class="nav-label">LOG OUT</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Dashboard Content Area -->
+      <main class="dashboard-main-area">
+        <!-- Top Bar -->
+        <header class="dashboard-topbar">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button type="button" class="btn-dashboard-menu" aria-label="Toggle menu" style="display: none; background: rgb(255, 255, 255); border: 1px solid rgb(11, 11, 15); border-radius: 8px; padding: 6px 12px; font-size: 16px; cursor: pointer;">
+              ☰
+            </button>
+            <div>
+              <div style="font-size: 11px; font-weight: 700; color: var(--text-dim); letter-spacing: 1.5px;">
+                CAMPUSCODE / STUDENT | OVERVIEW
+              </div>
+              <h1 style="font-size: 26px; font-weight: 900; margin-top: 2px;">OVERVIEW</h1>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <!-- Command Palette Trigger Button (Ctrl+K or Cmd+K) -->
+            <button type="button" class="btn-cmd-palette-trigger" aria-label="Open command palette">
+              <span class="cmd-key">⌘K</span>
+              <span>SEARCH</span>
+            </button>
+
+            <!-- Notification Bell with Lime Unread Badge and Dropdown -->
+            <div class="notification-bell-container" style="position: relative;">
+              <button type="button" class="btn-notification-bell" aria-label="Notifications" aria-expanded="false">
+                🔔
+                <span class="unread-count-badge">3</span>
+              </button>
+              <div class="notification-dropdown is-closed" role="menu">
+                <div class="notif-dropdown-header">
+                  <strong>NOTIFICATIONS</strong>
+                  <button type="button" class="btn-mark-all-read">MARK ALL READ</button>
+                </div>
+                <div class="notif-dropdown-list">
+                  <div class="notif-dropdown-item is-unread">
+                    <span class="live-dot-lime"></span>
+                    <div>
+                      <strong>Team Milestone Unlocked</strong>
+                      <small>Prototype checkpoint passed. +250 XP earned.</small>
+                    </div>
+                  </div>
+                  <div class="notif-dropdown-item is-unread">
+                    <span class="live-dot-lime"></span>
+                    <div>
+                      <strong>Mentor Review Published</strong>
+                      <small>Sarah Lin left feedback on your ML schema.</small>
+                    </div>
+                  </div>
+                  <div class="notif-dropdown-item is-unread">
+                    <span class="live-dot-lime"></span>
+                    <div>
+                      <strong>Submission Window Opens Soon</strong>
+                      <small>Final commits open tomorrow at 09:00 IST.</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Refresh Button -->
+            <button type="button" class="btn-dashboard-refresh" aria-label="Refresh view">
+              ↻
+            </button>
+
+            <!-- User Pill -->
+            <div class="dashboard-user-pill">
+              <div class="user-initials dashboard-user-initials" style="width: 28px; height: 28px; font-size: 11px;">BU</div>
+              <span class="dashboard-user-name-display" style="font-size: 12px; font-weight: 700;">BUILDER</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Greeting Area -->
+        <div style="margin-bottom: 28px;">
+          <div class="section-eyebrow">
+            <span class="live-dot"></span>
+            <span class="scramble-on-enter">STUDENT WORKSPACE / LIVE</span>
+          </div>
+          <h2 class="dashboard-welcome-heading" style="font-size: 34px; font-weight: 900; margin-top: 6px;">
+            WELCOME BACK, <span class="dashboard-welcome-name" style="color: rgb(11, 11, 15); text-decoration: underline; text-decoration-color: var(--cc-lime);">BUILDER</span>.
+          </h2>
+          <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">
+            Your CampusCode activity and live hackathon states are synchronized.
+          </p>
+        </div>
+
+        <!-- Quick Actions Row -->
+        <section class="dashboard-quick-actions-row">
+          <button type="button" class="quick-action-btn" data-action="action-join">
+            <span class="quick-action-icon">↗</span>
+            <span class="quick-action-label">JOIN EVENT</span>
+          </button>
+          <button type="button" class="quick-action-btn" data-action="action-submit">
+            <span class="quick-action-icon">⬆</span>
+            <span class="quick-action-label">SUBMIT PROJECT</span>
+          </button>
+          <button type="button" class="quick-action-btn" data-action="action-teammates">
+            <span class="quick-action-icon">👥</span>
+            <span class="quick-action-label">FIND TEAMMATES</span>
+          </button>
+          <button type="button" class="quick-action-btn" data-action="action-cert">
+            <span class="quick-action-icon">📥</span>
+            <span class="quick-action-label">DOWNLOAD CERTIFICATE</span>
+          </button>
+        </section>
+
+        <!-- Featured Card with Live Countdown Digit Blocks and SVG Progress Ring -->
+        <section class="dashboard-hero-card">
+          <div style="flex: 1; min-width: 280px;">
+            <div style="font-size: 11px; font-weight: 800; color: var(--cc-lime-dark); letter-spacing: 1.5px; margin-bottom: 8px;">
+              BUILD · LEARN · COLLABORATE
+            </div>
+            <h3 style="font-size: 26px; font-weight: 900; margin-bottom: 10px;">
+              AI INNOVATION CHALLENGE 2026
+            </h3>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+              You are currently participating in Round 2. Submit your functional prototype before the countdown expires.
+            </p>
+
+            <!-- Flat Live Countdown Blocks -->
+            <div class="live-countdown-grid">
+              <div class="countdown-digit-block">
+                <span class="countdown-val countdown-days">03</span>
+                <small>DAYS</small>
+              </div>
+              <div class="countdown-digit-block">
+                <span class="countdown-val countdown-hrs">14</span>
+                <small>HRS</small>
+              </div>
+              <div class="countdown-digit-block">
+                <span class="countdown-val countdown-min">28</span>
+                <small>MIN</small>
+              </div>
+              <div class="countdown-digit-block">
+                <span class="countdown-val countdown-sec">42</span>
+                <small>SEC</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flat SVG Progress Ring: ROUND 2 OF 3 in Lime -->
+          <div class="round-progress-ring-box">
+            <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+              <circle cx="55" cy="55" r="46" stroke="rgba(255, 255, 255, 0.15)" stroke-width="8" fill="none"/>
+              <circle class="progress-ring-circle" cx="55" cy="55" r="46" stroke="rgb(168, 230, 46)" stroke-width="8" fill="none" stroke-dasharray="289" stroke-dashoffset="96" stroke-linecap="butt"/>
+            </svg>
+            <div class="ring-center-text">
+              <strong class="ring-step-title">ROUND 2</strong>
+              <small>OF 3</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- Four Stat Cards with Count-up Animation and Tiny Flat Bar Sparkline -->
+        <section class="stats-grid-quad">
+          <div class="stat-metric-card">
+            <span class="form-label">REGISTERED</span>
+            <div class="stat-metric-num" data-count-to="4">04</div>
+            <div class="stat-sparkline" aria-hidden="true">
+              <span style="height: 45%;"></span>
+              <span style="height: 65%;"></span>
+              <span style="height: 50%;"></span>
+              <span style="height: 80%;"></span>
+              <span style="height: 100%;"></span>
+            </div>
+            <small style="font-size: 11px; font-weight: 700; color: var(--text-dim);">HACKATHONS JOINED</small>
+          </div>
+
+          <div class="stat-metric-card">
+            <span class="form-label">ONGOING</span>
+            <div class="stat-metric-num" data-count-to="1" style="color: var(--cc-lime-dark);">01</div>
+            <div class="stat-sparkline" aria-hidden="true">
+              <span style="height: 35%;"></span>
+              <span style="height: 55%;"></span>
+              <span style="height: 75%;"></span>
+              <span style="height: 60%;"></span>
+              <span style="height: 90%;"></span>
+            </div>
+            <small style="font-size: 11px; font-weight: 700; color: var(--text-dim);">ACTIVE ARENA</small>
+          </div>
+
+          <div class="stat-metric-card">
+            <span class="form-label">COMPLETED</span>
+            <div class="stat-metric-num" data-count-to="3">03</div>
+            <div class="stat-sparkline" aria-hidden="true">
+              <span style="height: 50%;"></span>
+              <span style="height: 60%;"></span>
+              <span style="height: 70%;"></span>
+              <span style="height: 85%;"></span>
+              <span style="height: 95%;"></span>
+            </div>
+            <small style="font-size: 11px; font-weight: 700; color: var(--text-dim);">SUCCESSFUL SUBMISSIONS</small>
+          </div>
+
+          <div class="stat-metric-card">
+            <span class="form-label">CERTIFICATES</span>
+            <div class="stat-metric-num" data-count-to="2">02</div>
+            <div class="stat-sparkline" aria-hidden="true">
+              <span style="height: 30%;"></span>
+              <span style="height: 50%;"></span>
+              <span style="height: 65%;"></span>
+              <span style="height: 85%;"></span>
+              <span style="height: 100%;"></span>
+            </div>
+            <small style="font-size: 11px; font-weight: 700; color: var(--text-dim);">VERIFIED ON-CHAIN</small>
+          </div>
+        </section>
+
+        <!-- Activity Heatmap Section (7 by 12 Flat Squares with Tooltip) -->
+        <section class="dashboard-panel-card dashboard-heatmap-card">
+          <div class="heatmap-header">
+            <div>
+              <span class="form-label" style="color: var(--cc-lime-dark);">CONTRIBUTION RECORD</span>
+              <h3 style="font-size: 20px; font-weight: 800; margin-top: 4px;">ANNUAL CONTRIBUTION ACTIVITY</h3>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">84 SESSIONS · 12 WEEKS</span>
+          </div>
+
+          <div class="activity-heatmap-grid" role="grid" aria-label="Activity heatmap">
+            <!-- 84 squares generated dynamically via script -->
+          </div>
+
+          <div class="heatmap-footer-row">
+            <div class="heatmap-legend">
+              <span>Less</span>
+              <span class="legend-cell level-0"></span>
+              <span class="legend-cell level-1"></span>
+              <span class="legend-cell level-2"></span>
+              <span class="legend-cell level-3"></span>
+              <span>More</span>
+            </div>
+          </div>
+          <div class="heatmap-tooltip is-hidden" role="tooltip"></div>
+        </section>
+
+        <!-- Upcoming Deadlines List -->
+        <section class="dashboard-panel-card" style="margin-bottom: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div style="font-size: 13px; font-weight: 800; letter-spacing: 1px;">
+              UPCOMING DEADLINES
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">CHRONOLOGICAL ORDER</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="activity-item-card" style="padding: 12px 0;">
+              <div style="background: rgb(241, 243, 249); border: 1px solid rgb(11, 11, 15); padding: 10px 14px; border-radius: 12px; text-align: center; min-width: 72px;">
+                <strong style="font-size: 18px; color: rgb(11, 11, 15); display: block;">14</strong>
+                <small style="font-size: 10px; font-weight: 800; color: var(--text-dim);">NOV</small>
+              </div>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">AI Innovation Challenge Prototype Demo</strong>
+                <span style="font-size: 12px; color: var(--text-muted);">Main Round Submission Checkpoint</span>
+              </div>
+              <span class="hack-status-pill status-live">STARTS SOON</span>
+            </div>
+
+            <div class="activity-item-card" style="padding: 12px 0;">
+              <div style="background: rgb(241, 243, 249); border: 1px solid rgb(11, 11, 15); padding: 10px 14px; border-radius: 12px; text-align: center; min-width: 72px;">
+                <strong style="font-size: 18px; color: rgb(11, 11, 15); display: block;">21</strong>
+                <small style="font-size: 10px; font-weight: 800; color: var(--text-dim);">NOV</small>
+              </div>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">Future Web Hackathon Submission Lock</strong>
+                <span style="font-size: 12px; color: var(--text-muted);">Repository Commit Freeze</span>
+              </div>
+              <span class="hack-status-pill status-live">STARTS SOON</span>
+            </div>
+
+            <div class="activity-item-card" style="padding: 12px 0; border-bottom: none;">
+              <div style="background: rgb(241, 243, 249); border: 1px solid rgb(11, 11, 15); padding: 10px 14px; border-radius: 12px; text-align: center; min-width: 72px;">
+                <strong style="font-size: 18px; color: rgb(11, 11, 15); display: block;">02</strong>
+                <small style="font-size: 10px; font-weight: 800; color: var(--text-dim);">DEC</small>
+              </div>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">Campus Tech Hardware Showcase</strong>
+                <span style="font-size: 12px; color: var(--text-muted);">Prototype Validation Exhibition</span>
+              </div>
+              <span class="hack-status-pill status-live">STARTS SOON</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two Panels: 01 / Current Activity & 02 / Notifications -->
+        <section class="dashboard-dual-grid">
+          <!-- 01 / CURRENT ACTIVITY -->
+          <div class="dashboard-panel-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime-dark);">01 / CURRENT ACTIVITY</span>
+                <h3 style="font-size: 20px; font-weight: 800; margin-top: 4px;">ACTIVE CHALLENGE</h3>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">LIVE SYNC</span>
+            </div>
+
+            <div style="border: 1px solid rgb(11, 11, 15); border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px rgb(11, 11, 15); margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim);">CC-AI-2026-X9</span>
+                <div style="display: flex; gap: 8px;">
+                  <span class="hack-status-pill status-live">ACTIVE</span>
+                  <span class="hack-status-pill" style="background: rgb(241, 243, 249); color: rgb(11, 11, 15); border-color: rgb(11, 11, 15);">HYBRID</span>
+                </div>
+              </div>
+              <strong style="font-size: 16px; display: block; margin-bottom: 6px;">AI Innovation Challenge 2026</strong>
+              <div style="font-size: 12px; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span>START: NOV 07, 2026</span>
+                <span>Team Lead · 4 Members</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 / NOTIFICATIONS -->
+          <div class="dashboard-panel-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime-dark);">02 / NOTIFICATIONS</span>
+                <h3 style="font-size: 20px; font-weight: 800; margin-top: 4px;">LIVE FEED</h3>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">UPDATED</span>
+            </div>
+
+            <div class="notification-row">
+              <span class="live-dot"></span>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">Team Milestone Unlocked</strong>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Prototype checkpoint passed verification. +250 XP earned.</p>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">2h ago</span>
+            </div>
+
+            <div class="notification-row">
+              <span class="live-dot"></span>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">Mentor Feedback Received</strong>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Sarah Lin left 2 notes on your machine learning architecture.</p>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">2h ago</span>
+            </div>
+
+            <div class="notification-row" style="border-bottom: none;">
+              <span class="live-dot"></span>
+              <div style="flex: 1;">
+                <strong style="font-size: 14px; display: block;">Submission Window Opens Soon</strong>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Project uploads begin tomorrow at 09:00 AM IST.</p>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-dim);">Yesterday</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Command Palette Flat Accessible Modal (Ctrl+K or Cmd+K) -->
+    <div class="dashboard-cmd-palette is-palette-closed" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Command palette">
+      <div class="palette-backdrop"></div>
+      <div class="palette-card">
+        <div class="palette-search-row">
+          <span class="palette-search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="text"
+            class="palette-search-input"
+            placeholder="Search pages, actions, commands... (Esc to close)"
+            aria-label="Search pages and actions"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="palette-esc-hint">ESC</span>
+        </div>
+        <div class="palette-results-container">
+          <ul class="palette-results-list" role="listbox">
+            <!-- Dynamically populated or static items from content.js -->
+          </ul>
+        </div>
+        <div class="palette-footer-row">
+          <span>↑↓ to navigate</span>
+          <span>↵ to select</span>
+          <span>esc to close</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Flat Feedback Toast -->
+    <div class="dashboard-toast is-hidden" role="status" aria-live="polite"></div>
+
+    <!-- Client Scripts -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

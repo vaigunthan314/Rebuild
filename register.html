@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register · CampusCode Hackathon Arena</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="auth-page-register">
+    <!-- Hard Horizontal Wipe Curtain (Enters from Right for Register) -->
+    <div class="auth-wipe-curtain curtain-from-right" aria-hidden="true">
+      <div class="curtain-layer-black"></div>
+      <div class="curtain-layer-lime"></div>
+    </div>
+
+    <div class="auth-page-container register-id-container">
+      <!-- Top Header Strip -->
+      <header class="auth-header">
+        <a href="index.html" class="brand-link" aria-label="CampusCode home">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="bar-black"></span>
+            <span class="bar-lime"></span>
+            <span class="bar-black"></span>
+          </div>
+          <div class="brand-text">
+            <strong>CAMPUSCODE</strong>
+            <small style="color: var(--cc-lime-dark);">HACKATHON ARENA</small>
+          </div>
+        </a>
+
+        <div>
+          <a href="index.html" class="auth-back-btn">
+            <span>←</span>
+            <span>BACK TO HOME</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- 4-Segment Step Bar Above Form (DETAILS, CODE, PIN, WELCOME) -->
+      <nav class="register-step-bar" aria-label="Registration stages">
+        <div class="reg-step-segment is-active" data-step="1">
+          <span class="step-num">01</span>
+          <span class="step-title">DETAILS</span>
+          <span class="step-check" aria-hidden="true">✓</span>
+        </div>
+        <div class="reg-step-segment" data-step="2">
+          <span class="step-num">02</span>
+          <span class="step-title">CODE</span>
+          <span class="step-check" aria-hidden="true">✓</span>
+        </div>
+        <div class="reg-step-segment" data-step="3">
+          <span class="step-num">03</span>
+          <span class="step-title">PIN</span>
+          <span class="step-check" aria-hidden="true">✓</span>
+        </div>
+        <div class="reg-step-segment" data-step="4">
+          <span class="step-num">04</span>
+          <span class="step-title">WELCOME</span>
+          <span class="step-check" aria-hidden="true">✓</span>
+        </div>
+      </nav>
+
+      <!-- 50/50 Split Main Grid (Mirrored: Form Left, Lime Panel Right) -->
+      <main class="auth-grid-split register-grid-split">
+        <!-- Left Column: Near-Black Card with White Inputs & Labels -->
+        <section class="auth-right-col register-dark-card">
+          <!-- Success Confetti Animation Stage -->
+          <div class="auth-confetti-stage" aria-hidden="true"></div>
+
+          <!-- Step 1: Registration Credentials & Verification Code -->
+          <div class="auth-step-stage register-step-1">
+            <div class="auth-form-head">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime);">NEW ACCOUNT</span>
+                <h2 class="auth-form-h2 register-h2-white">REGISTER</h2>
+                <p class="auth-form-sub register-sub-white">Create your student builder account.</p>
+              </div>
+              <div class="auth-card-code register-code-lime">CC<br />02</div>
+            </div>
+
+            <form class="auth-form register-form-step1" novalidate>
+              <!-- 1. Full Name -->
+              <div class="form-group-floating">
+                <label class="form-label register-label-white">FULL NAME</label>
+                <div class="form-input-wrap">
+                  <span class="input-icon">◇</span>
+                  <input class="form-input register-input-name" type="text" placeholder="Your full name" required autocomplete="name" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+              </div>
+
+              <!-- 2. Student Email -->
+              <div class="form-group-floating">
+                <label class="form-label register-label-white">STUDENT EMAIL</label>
+                <div class="form-input-wrap">
+                  <span class="input-icon">@</span>
+                  <input class="form-input register-input-email" type="email" placeholder="you@campus.edu" required autocomplete="email" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+              </div>
+
+              <!-- 3. Password with 4-Segment Strength Meter -->
+              <div class="form-group-floating">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <label class="form-label register-label-white" style="margin-bottom: 0;">PASSWORD</label>
+                  <button type="button" class="btn-toggle-reg-pass" style="background: none; border: none; font-size: 10px; font-weight: 800; color: var(--cc-lime); cursor: pointer; text-decoration: underline;">SHOW / HIDE</button>
+                </div>
+                <div class="form-input-wrap">
+                  <span class="input-icon">•</span>
+                  <input class="form-input register-input-password" type="password" placeholder="Create password (8+ chars)" required autocomplete="new-password" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+                <!-- 4-Segment Strength Meter -->
+                <div class="strength-segments-row" aria-label="Password strength meter">
+                  <div class="strength-segment seg-1"></div>
+                  <div class="strength-segment seg-2"></div>
+                  <div class="strength-segment seg-3"></div>
+                  <div class="strength-segment seg-4"></div>
+                </div>
+                <div class="strength-meta-row">
+                  <span style="color: rgb(200, 200, 215);">STRENGTH</span>
+                  <span class="register-pass-label" style="color: var(--cc-lime);">Weak</span>
+                </div>
+              </div>
+
+              <!-- 4. Confirm Password -->
+              <div class="form-group-floating">
+                <label class="form-label register-label-white">CONFIRM PASSWORD</label>
+                <div class="form-input-wrap">
+                  <span class="input-icon">•</span>
+                  <input class="form-input register-input-confirm" type="password" placeholder="Repeat your password" required autocomplete="new-password" />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+              </div>
+
+              <!-- 5. 18+ Checkbox -->
+              <div class="form-group-floating">
+                <label style="display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgb(220, 220, 235); cursor: pointer;">
+                  <input type="checkbox" class="register-checkbox-age" required style="accent-color: var(--cc-lime); width: 16px; height: 16px; cursor: pointer;" />
+                  <span>I confirm that I am <strong>18 years of age or older</strong></span>
+                </label>
+              </div>
+
+              <!-- 6. Verification Code (Captcha) Block -->
+              <div class="form-group-floating auth-captcha-block register-captcha-block">
+                <label class="form-label register-label-white">VERIFICATION CODE</label>
+                <div class="captcha-render-row">
+                  <canvas class="auth-captcha-canvas" width="190" height="64" role="img" aria-label="Verification code image"></canvas>
+                  <button type="button" class="btn-refresh-captcha" aria-label="New code" title="New code">
+                    <span aria-hidden="true">↻</span>
+                    <span>NEW</span>
+                  </button>
+                </div>
+                <div class="form-input-wrap captcha-input-wrap" style="margin-top: 8px;">
+                  <span class="input-icon">✦</span>
+                  <input class="form-input auth-input-captcha register-input-captcha" type="text" placeholder="Enter the code" autocomplete="off" maxlength="5" autocapitalize="characters" required />
+                  <span class="input-status-icon" aria-hidden="true">✓</span>
+                </div>
+                <div class="captcha-hint-row">
+                  <button type="button" class="btn-captcha-help-link register-captcha-hint">Can't read it? Get a new code</button>
+                </div>
+              </div>
+
+              <!-- Organizer Note -->
+              <p class="organizer-note" style="font-size: 11px; color: rgb(180, 180, 205); margin: 0;">
+                Organizer? Accounts are created by our team: <a href="mailto:campuscode@gmail.com" style="color: var(--cc-lime); font-weight: 700; text-decoration: underline;">campuscode@gmail.com</a>
+              </p>
+
+              <!-- Inline Error Notice -->
+              <div class="register-error-container" style="display: none;">
+                <div class="flat-error-notice register-error-text">PLEASE COMPLETE ALL FIELDS CORRECTLY.</div>
+              </div>
+
+              <!-- 7. Submit Button with Loading Squares -->
+              <button type="submit" class="btn-auth-primary btn-submit-reg-step1">
+                <span class="btn-label-text">CREATE ACCOUNT →</span>
+                <span class="btn-loading-squares" style="display: none;" aria-hidden="true">
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                </span>
+              </button>
+
+              <div style="text-align: center; margin-top: 10px; font-size: 12px; color: rgb(200, 200, 215);">
+                <span>ALREADY HAVE AN ACCOUNT?</span>
+                <a href="login.html" class="auth-switch-link" style="color: var(--cc-lime); font-weight: 800; text-decoration: underline; margin-left: 4px;">LOGIN →</a>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 2: Verification PIN (Preserved) -->
+          <div class="auth-step-stage register-step-2" style="display: none;">
+            <div class="auth-form-head">
+              <div>
+                <span class="form-label" style="color: var(--cc-lime);">STEP 02 // SECURITY</span>
+                <h2 class="auth-form-h2 register-h2-white">VERIFY YOUR PIN</h2>
+                <p class="auth-form-sub register-sub-white">We sent a 6-digit PIN to the email you entered: <strong class="masked-email-display" style="color: var(--cc-lime);">a***@campus.edu</strong></p>
+              </div>
+              <div class="auth-card-code register-code-lime">PIN<br />02</div>
+            </div>
+
+            <form class="auth-form pin-verification-form" novalidate>
+              <!-- 6 Square PIN Digits -->
+              <div class="form-group-floating">
+                <div class="pin-inputs-row" role="group" aria-label="Verification PIN digits">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-1" aria-label="PIN digit 1 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-2" aria-label="PIN digit 2 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-3" aria-label="PIN digit 3 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-4" aria-label="PIN digit 4 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-5" aria-label="PIN digit 5 of 6" autocomplete="one-time-code" />
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box pin-digit-6" aria-label="PIN digit 6 of 6" autocomplete="one-time-code" />
+                </div>
+                <p class="pin-demo-notice" style="font-size: 11px; color: rgb(180, 180, 205); margin-top: 8px;">Demo mode: no email is sent.</p>
+              </div>
+
+              <!-- PIN Error Notice -->
+              <div class="pin-error-container" style="display: none;">
+                <div class="flat-error-notice pin-error-text">INCORRECT PIN. 2 ATTEMPTS LEFT</div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-auth-primary btn-submit-pin" disabled>
+                <span class="btn-label-text">VERIFY AND CREATE ACCOUNT →</span>
+                <span class="btn-loading-squares" style="display: none;" aria-hidden="true">
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                  <span class="loading-sq"></span>
+                </span>
+              </button>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 11px;">
+                <button type="button" class="btn-resend-pin" disabled style="background: none; border: none; font-weight: 800; color: rgb(140, 140, 160); cursor: not-allowed;">
+                  RESEND IN 30s
+                </button>
+                <button type="button" class="btn-change-email" style="background: none; border: none; font-weight: 800; color: var(--cc-lime); cursor: pointer; text-decoration: underline;">
+                  ← CHANGE EMAIL
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 3: Welcome Step (Preserved) -->
+          <div class="auth-step-stage register-step-welcome" style="display: none;">
+            <div class="auth-welcome-block" style="text-align: center; padding: 24px 12px;">
+              <div class="welcome-check-circle" style="margin: 0 auto 16px;">✓</div>
+              <span class="form-label" style="color: var(--cc-lime);">VERIFIED</span>
+              <h2 class="auth-form-h2 register-h2-white" style="margin-top: 6px;">ACCOUNT CREATED</h2>
+              <p class="auth-form-sub register-sub-white" style="margin-top: 8px;">Your student identity is verified and active.</p>
+
+              <div style="margin-top: 24px;">
+                <button type="button" class="btn-auth-primary btn-goto-dashboard">
+                  <span>GO TO DASHBOARD →</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 10px; font-weight: 700; color: rgb(180, 180, 205); display: flex; justify-content: space-between; margin-top: 20px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <span>STUDENT VERIFIED</span>
+            <span>PRIVACY PRESERVED</span>
+            <span>2026</span>
+          </div>
+        </section>
+
+        <!-- Right Column: Solid Lime Panel with Live Student ID Card Preview -->
+        <section class="auth-left-col register-lime-panel">
+          <div class="auth-left-content">
+            <!-- Top: Eyebrow and Giant Outlined Title -->
+            <div>
+              <div class="auth-orbit-wrap">
+                <div class="auth-orbit-anim" aria-hidden="true">
+                  <div class="auth-orbit-ring" style="border-color: rgb(11, 11, 18);">
+                    <span class="auth-orbit-dot" style="background: rgb(11, 11, 18);"></span>
+                  </div>
+                  <span class="auth-orbit-core" style="color: rgb(11, 11, 18);">CC</span>
+                </div>
+                <div>
+                  <span class="auth-eyebrow-tag" style="color: rgb(11, 11, 18);">ARENA ONBOARDING · 02 / 02</span>
+                  <div style="font-size: 11px; font-weight: 800; color: rgb(11, 11, 18); margin-top: 2px;">STUDENT VERIFICATION</div>
+                </div>
+              </div>
+
+              <h1 class="auth-giant-title register-title-dark">JOIN THE ARENA</h1>
+
+              <p class="auth-desc-text register-desc-dark">
+                Create your CampusCode identity and become part of a student ecosystem designed around ideas, teams, technology and competition.
+              </p>
+            </div>
+
+            <!-- Middle: Live Student ID Card Preview -->
+            <div class="student-id-card-wrap">
+              <div class="student-id-card">
+                <div class="id-card-header">
+                  <div class="id-card-brand">
+                    <span class="id-card-logo-bars">
+                      <span class="bar-k"></span>
+                      <span class="bar-l"></span>
+                      <span class="bar-w"></span>
+                    </span>
+                    <span class="id-card-brand-name">CAMPUSCODE</span>
+                  </div>
+                  <span class="id-card-role-tag">STUDENT</span>
+                </div>
+
+                <div class="id-card-body">
+                  <div class="id-card-avatar-circle">
+                    <span class="id-card-initials">CC</span>
+                  </div>
+                  <div class="id-card-info">
+                    <div class="id-card-name-val">STUDENT BUILDER</div>
+                    <div class="id-card-email-domain">@campus.edu</div>
+                    <div class="id-card-id-code">CC-26-004217</div>
+                  </div>
+                </div>
+
+                <div class="id-card-footer">
+                  <div class="id-card-barcode" aria-hidden="true">
+                    <svg width="180" height="26" viewBox="0 0 180 26" fill="none">
+                      <rect x="0" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="5" y="0" width="1.5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="8" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="14" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="18" y="0" width="1" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="22" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="27" y="0" width="5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="34" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="38" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="44" y="0" width="1" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="47" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="54" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="58" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="63" y="0" width="5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="71" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="75" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="81" y="0" width="1.5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="85" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="91" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="95" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="101" y="0" width="1" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="104" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="110" y="0" width="5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="117" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="121" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="126" y="0" width="1" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="129" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="135" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="139" y="0" width="3.5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="145" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="150" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="156" y="0" width="1.5" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="160" y="0" width="3" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="165" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="170" y="0" width="4" height="26" fill="rgb(11, 11, 18)"/>
+                      <rect x="176" y="0" width="2" height="26" fill="rgb(11, 11, 18)"/>
+                    </svg>
+                  </div>
+                  <div class="id-card-validity">VALID: ARENA 2026</div>
+                </div>
+
+                <!-- Verified Stamp slammed upon PIN verification -->
+                <div class="id-card-stamp" aria-hidden="true">VERIFIED</div>
+              </div>
+            </div>
+
+            <!-- Tip Card -->
+            <div class="auth-rotating-tip register-tip-dark" aria-live="polite">
+              <span class="tip-eyebrow" style="color: rgb(11, 11, 18);">ARENA INTEL // TIP</span>
+              <p class="tip-text" style="color: rgb(11, 11, 18);">Your ID card is generated the moment you verify.</p>
+            </div>
+
+            <!-- Bottom: 3 Count-up Stats Row -->
+            <div class="auth-stats-row" style="border-top-color: rgba(11, 11, 18, 0.2);">
+              <div class="auth-stat-box">
+                <span class="auth-stat-val" style="color: rgb(11, 11, 18);" data-val="2400" data-suffix="+">2,400+</span>
+                <span class="auth-stat-lbl" style="color: rgba(11, 11, 18, 0.7);">BUILDERS</span>
+              </div>
+              <div class="auth-stat-box">
+                <span class="auth-stat-val" style="color: rgb(11, 11, 18);" data-val="48" data-suffix="">48</span>
+                <span class="auth-stat-lbl" style="color: rgba(11, 11, 18, 0.7);">CHALLENGES</span>
+              </div>
+              <div class="auth-stat-box">
+                <span class="auth-stat-val" style="color: rgb(11, 11, 18);" data-val="100" data-suffix="%">100%</span>
+                <span class="auth-stat-lbl" style="color: rgba(11, 11, 18, 0.7);">VERIFIED</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom Footer -->
+      <footer style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-dim); margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(8, 8, 12, 0.15);">
+        <span>CAMPUSCODE © 2026</span>
+        <span>LEARN · BUILD · COMPETE · SHIP</span>
+        <span>ALL SYSTEMS OPERATIONAL</span>
+      </footer>
+    </div>
+
+    <!-- DEMO INBOX Toast (Bottom-Right Corner) -->
+    <aside class="demo-inbox-toast" aria-live="assertive" style="display: none;">
+      <div class="demo-inbox-head">
+        <span class="live-dot-lime" aria-hidden="true"></span>
+        <span class="demo-inbox-title">DEMO INBOX</span>
+      </div>
+      <div class="demo-inbox-body">
+        <span class="demo-inbox-text">Demo PIN: <strong class="demo-inbox-pin">------</strong></span>
+        <button type="button" class="btn-copy-pin" aria-label="Copy verification PIN to clipboard">COPY</button>
+      </div>
+    </aside>
+
+    <!-- Client Scripts -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
