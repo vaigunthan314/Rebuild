@@ -195,7 +195,6 @@ function initOpeningLanding() {
       sessionStorage.removeItem('campuscode_hero_entered');
     } catch (e) {}
     initHeroSceneReveal();
-    console.log('HERO READY scrollY=' + window.scrollY);
     return;
   }
 

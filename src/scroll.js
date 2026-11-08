@@ -878,7 +878,6 @@ export function initExperienceVideoSection() {
   // Native video fallback and visibility pause
   if (nativeVideo) {
     nativeVideo.addEventListener('error', () => {
-      console.log('EXPERIENCE SOURCE FALLBACK: built-in animated reel');
       nativeVideo.style.display = 'none';
       if (fallbackPoster) fallbackPoster.style.display = 'flex';
       duckMusic(false);

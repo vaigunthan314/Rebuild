@@ -81,11 +81,6 @@ function markMusicDone() {
   hideTapForSoundPrompt();
   removeOneTimeGestureListeners();
   disableNavbarSoundControl();
-
-  if (!window.__ccMusicDoneLogged) {
-    window.__ccMusicDoneLogged = true;
-    console.log('MUSIC DONE');
-  }
 }
 
 /**
@@ -248,10 +243,6 @@ export function startMusic(fadeDurationMs = 1500) {
   }
 
   window.__musicStartCount = (window.__musicStartCount || 0) + 1;
-  console.log('MUSIC START', window.__musicStartCount);
-  if (window.__musicStartCount > 1) {
-    console.warn('WARNING: MUSIC START called more than once!', window.__musicStartCount);
-  }
 
   // Strictly return immediately if audio object already exists on window.__ccMusic
   if (window.__ccMusic) {

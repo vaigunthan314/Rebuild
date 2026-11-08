@@ -1,3 +1,8 @@
+node_modules
+.git
+.DS_Store
+.vite
+.vercel
 public/assets/campuscode frames
 public/assets/campuscode frames/*
 "public/assets/campuscode frames"
