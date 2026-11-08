@@ -132,25 +132,69 @@ function initOpeningLanding() {
 
   if (prefersReducedMotion() || (hasSeenIntro && !forceIntro)) {
     // Completely bypass opening and prelude, open straight on the hero
-    const nav = document.querySelector('.site-navbar');
-    if (nav) {
-      nav.classList.remove('is-intro-hidden');
-      nav.removeAttribute('inert');
-    }
-
     skipOpeningStageImmediately();
+    const overlay = document.querySelector('.opening-stage-overlay');
+    if (overlay) overlay.style.display = 'none';
+    const enterScreen = document.querySelector('.enter-stage-screen');
+    if (enterScreen) enterScreen.style.display = 'none';
+
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     document.body.classList.remove('opening-locked');
 
-    const heroTop = getHeroOffsetTop();
-    window.scrollTo(0, heroTop);
+    const nav = document.querySelector('.site-navbar');
+    if (nav) {
+      nav.classList.remove('is-intro-hidden');
+      nav.removeAttribute('inert');
+      nav.style.visibility = 'visible';
+      nav.style.opacity = '1';
+      nav.style.transform = 'none';
+    }
+    const statusStrip = document.querySelector('.navbar-status-strip');
+    if (statusStrip) {
+      statusStrip.style.opacity = '1';
+      statusStrip.style.transform = 'none';
+    }
+
+    // Set all page content visible
+    const pageWrapper = document.querySelector('.page-wrapper');
+    if (pageWrapper) {
+      pageWrapper.style.opacity = '1';
+      pageWrapper.style.visibility = 'visible';
+      pageWrapper.style.transform = 'none';
+    }
+    document.querySelectorAll('.split-word').forEach((w) => {
+      w.style.opacity = '1';
+      w.style.transform = 'none';
+    });
+    document.querySelectorAll('.hero-flat-panel, .hero-hud-tags-container').forEach((el) => {
+      el.classList.remove('is-hero-hidden');
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.clipPath = 'none';
+    });
+
+    // Hide prelude and frame canvas so page starts directly on the hero at scroll 0
+    const preludeSec = document.querySelector('.section-prelude');
+    if (preludeSec) {
+      preludeSec.style.display = 'none';
+    }
+    const canvasWrapper = document.querySelector('.cinematic-canvas-wrapper');
+    if (canvasWrapper) {
+      canvasWrapper.style.display = 'none';
+    }
+
+    window.scrollTo(0, 0);
     const lenis = initLenisScroll();
     if (lenis) {
-      lenis.scrollTo(heroTop, { immediate: true });
+      lenis.scrollTo(0, { immediate: true });
       lenis.start();
     }
-    revealHeroMainDirectly();
+
+    try {
+      sessionStorage.removeItem('campuscode_hero_entered');
+    } catch (e) {}
+    initHeroSceneReveal();
     console.log('HERO READY scrollY=' + window.scrollY);
     return;
   }
@@ -255,68 +299,20 @@ function initOpeningLanding() {
   }
 }
 
-/**
- * Initializes quick page transitions without any full-screen colored wipes:
- * Outgoing content slides up and fades over 0.25 seconds;
- * Incoming content slides in over 0.4 seconds on the flat white background.
- */
+// Plain comment: Manages page entrance states and handles bfcache reload without link interception
 function initPageTransitions() {
-  const container = document.querySelector('.page-wrapper, .auth-page-container, .dashboard-layout');
-  if (container) {
-    gsap.fromTo(
-      container,
-      { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }
-    );
-  }
+  try {
+    const container = document.querySelector('.page-wrapper, .auth-page-container, .dashboard-layout');
+    if (container) {
+      container.style.opacity = '1';
+      container.style.visibility = 'visible';
+    }
+  } catch (err) {}
 
-  // Intercept internal HTML links for smooth slide-up and fade transition
-  const internalLinks = document.querySelectorAll('a[href$=".html"], a[href="/login"], a[href="/register"], a[href="/dashboard"]');
-  internalLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const destination = link.getAttribute('href');
-      if (!destination || destination.startsWith('http') || destination.includes('://')) return;
-
-      e.preventDefault();
-      const activeContainer = document.querySelector('.page-wrapper, .auth-page-container, .dashboard-layout');
-      if (activeContainer) {
-        gsap.to(activeContainer, {
-          y: -24,
-          opacity: 0,
-          duration: 0.25,
-          ease: 'power2.in',
-          onComplete: () => {
-            window.location.href = destination;
-          },
-        });
-      } else {
-        window.location.href = destination;
-      }
-    });
-  });
-
-  // Handle browser back-forward cache restoration
+  // Plain comment: Reloads page if restored from browser bfcache so state initializes cleanly
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
-      try {
-        if (sessionStorage.getItem('campuscode_intro_done') === 'true') {
-          const openingOverlay = document.querySelector('.opening-stage-overlay');
-          if (openingOverlay) openingOverlay.style.display = 'none';
-          document.documentElement.style.overflow = '';
-          document.body.style.overflow = '';
-          document.body.classList.remove('opening-locked');
-
-          const heroTop = getHeroOffsetTop();
-          window.scrollTo(0, heroTop);
-          const lenis = initLenisScroll();
-          if (lenis) {
-            lenis.scrollTo(heroTop, { immediate: true });
-            lenis.start();
-          }
-          revealHeroMainDirectly();
-          console.log('HERO READY scrollY=' + window.scrollY);
-        }
-      } catch (err) {}
+      window.location.reload();
     }
   });
 }
@@ -395,53 +391,52 @@ function extractInitials(name) {
   return 'BU';
 }
 
-/**
- * Shared setup for redesigned Auth pages:
- * Sets up rotating tip, count-up stats,
- * and hard horizontal wipe transition between auth pages.
- */
+// Plain comment: Sets up rotating tip, count-up stats, and safety net for auth pages
 function initAuthCommon() {
-  // Tip text
-  const tipTextEl = document.querySelector('.auth-rotating-tip .tip-text');
-  if (tipTextEl) {
-    const tip = (siteContent && siteContent.auth && siteContent.auth.tipText) || 'Verify with your PIN to enter the arena.';
-    tipTextEl.textContent = tip;
-  }
+  try {
+    // Tip text
+    const tipTextEl = document.querySelector('.auth-rotating-tip .tip-text');
+    if (tipTextEl) {
+      const tip = (siteContent && siteContent.auth && siteContent.auth.tipText) || 'Verify with your PIN to enter the arena.';
+      tipTextEl.textContent = tip;
+    }
 
-  // Count-up stats row
-  const statValEls = document.querySelectorAll('.auth-stat-val');
-  statValEls.forEach((el) => {
-    const targetVal = parseInt(el.getAttribute('data-val'), 10) || 0;
-    const suffix = el.getAttribute('data-suffix') || '';
-    let current = 0;
-    const step = Math.max(1, Math.floor(targetVal / 30));
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= targetVal) {
-        current = targetVal;
-        clearInterval(timer);
-      }
-      el.textContent = `${current.toLocaleString()}${suffix}`;
-    }, 30);
-  });
-
-  // Hard horizontal wipe transition for switch links
-  const switchLinks = document.querySelectorAll('.auth-switch-link');
-  const wipeCurtain = document.querySelector('.auth-wipe-curtain');
-  switchLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetUrl = link.getAttribute('href');
-      if (wipeCurtain) {
-        wipeCurtain.classList.add('is-wiping');
-        setTimeout(() => {
-          window.location.href = targetUrl;
-        }, 350);
-      } else {
-        window.location.href = targetUrl;
-      }
+    // Count-up stats row
+    const statValEls = document.querySelectorAll('.auth-stat-val');
+    statValEls.forEach((el) => {
+      const targetVal = parseInt(el.getAttribute('data-val'), 10) || 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      let current = 0;
+      const step = Math.max(1, Math.floor(targetVal / 30));
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= targetVal) {
+          current = targetVal;
+          clearInterval(timer);
+        }
+        el.textContent = `${current.toLocaleString()}${suffix}`;
+      }, 30);
     });
-  });
+  } catch (err) {}
+
+  // Safety net on both /login and /register: after 1.5 seconds remove any wipe or overlay and force all content visible
+  setTimeout(() => {
+    try {
+      const curtains = document.querySelectorAll('.auth-wipe-curtain');
+      curtains.forEach((c) => {
+        c.classList.remove('is-wiping');
+        c.style.display = 'none';
+      });
+      const containers = document.querySelectorAll(
+        '.auth-page-container, .auth-grid-split, .login-dark-panel, .login-white-panel, .register-dark-card, .register-lime-panel'
+      );
+      containers.forEach((el) => {
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+        el.style.transform = 'none';
+      });
+    } catch (err) {}
+  }, 1500);
 }
 
 /**

@@ -5989,7 +5989,7 @@ body.debug-active [data-section-name]::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  display: flex;
+  display: none;
   transform: translateX(-100%);
 }
 
@@ -6009,6 +6009,7 @@ body.debug-active [data-section-name]::before {
 }
 
 .auth-wipe-curtain.is-wiping {
+  display: flex;
   animation: animAuthWipe 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -6635,20 +6636,6 @@ body.debug-active [data-section-name]::before {
 .id-card-stamp.is-stamped {
   transform: rotate(-14deg) scale(1) !important;
   opacity: 1 !important;
-}
-
-/* Entrance wipe from right for register */
-.curtain-from-right .curtain-layer-black {
-  transform: translateX(101%);
-}
-.curtain-from-right .curtain-layer-lime {
-  transform: translateX(101%);
-}
-.curtain-from-right.is-wiping .curtain-layer-black {
-  transform: translateX(0%);
-}
-.curtain-from-right.is-wiping .curtain-layer-lime {
-  transform: translateX(0%);
 }
 
 /* ==============================================================================

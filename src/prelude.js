@@ -187,7 +187,7 @@ export function initPreludeScroll() {
   const skipBtn = document.querySelector('.prelude-skip-btn');
   const totalFrames = getTotalFrames();
 
-  if (!preludeSection || !heroSection) return;
+  if (!preludeSection || !heroSection || preludeSection.style.display === 'none') return;
 
   // Keyboard End key listener jumps to Hero start
   window.addEventListener('keydown', (e) => {
