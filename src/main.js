@@ -1283,20 +1283,6 @@ function initRegisterPage() {
     helpBtn: btnCaptchaHelp,
   });
 
-  // Step Bar progress updater (DETAILS, CODE, PIN, WELCOME)
-  const setStepBarState = (activeStep) => {
-    const stepSegments = document.querySelectorAll('.reg-step-segment');
-    stepSegments.forEach((seg, idx) => {
-      const stepNum = idx + 1;
-      seg.classList.remove('is-active', 'is-done');
-      if (stepNum === activeStep) {
-        seg.classList.add('is-active');
-      } else if (stepNum < activeStep) {
-        seg.classList.add('is-done');
-      }
-    });
-  };
-
   // Student ID card subtle 3deg tilt following mouse inside lime panel
   if (limePanel && idCard) {
     limePanel.addEventListener('mousemove', (e) => {
@@ -1468,9 +1454,6 @@ function initRegisterPage() {
       if (btnLabel) btnLabel.textContent = 'CREATING ACCOUNT...';
       if (loadingSquares) loadingSquares.style.display = 'inline-flex';
 
-      // Advance step bar: DETAILS & CODE done, PIN active
-      setStepBarState(3);
-
       // Generate in-memory PIN
       activePin = generateRandom6DigitPin();
 
@@ -1504,9 +1487,6 @@ function initRegisterPage() {
                     idCardStamp.classList.add('is-stamped');
                   }
 
-                  // Advance step bar to WELCOME
-                  setStepBarState(4);
-
                   launchAuthConfetti(confettiStage);
                   if (toastEl) toastEl.style.display = 'none';
 
@@ -1519,7 +1499,6 @@ function initRegisterPage() {
                 onChangeEmail: () => {
                   step2Stage.style.display = 'none';
                   step1Stage.style.display = 'block';
-                  setStepBarState(1);
                   if (btnSubmit) btnSubmit.disabled = false;
                   if (btnLabel) btnLabel.textContent = 'CREATE ACCOUNT →';
                   if (loadingSquares) loadingSquares.style.display = 'none';

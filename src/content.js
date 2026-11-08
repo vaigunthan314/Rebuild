@@ -860,7 +860,6 @@ export const siteContent = {
       createBtn: 'CREATE ACCOUNT →',
       eyebrow: 'ARENA ONBOARDING · 02 / 02',
       tipText: 'Your ID card is generated the moment you verify.',
-      steps: ['DETAILS', 'CODE', 'PIN', 'WELCOME'],
       idCardRole: 'STUDENT',
       idCardVerified: 'VERIFIED',
       nameLabel: 'FULL NAME',
